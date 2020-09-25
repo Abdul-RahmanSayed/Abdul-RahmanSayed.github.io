@@ -1,0 +1,5 @@
+.skill-set::after {
+    content: "";
+    clear:both;
+    display:block;
+}
