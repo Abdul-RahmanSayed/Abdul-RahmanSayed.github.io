@@ -55,6 +55,7 @@ function highRatings (rating) {
             movieList += "\n";
         }
     }
+    console.log("printing movie that has a rating higher than " + rating);
     console.log(movieList);
     console.log("\nIn total, there are " + movieCount +" matches")
 }
