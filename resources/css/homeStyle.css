@@ -113,14 +113,32 @@ img {
     padding-bottom: 4rem;    /* Footer height */
 }
 
-section {
+.my-experience section {
     width: 33.33%;
     float: left;
     padding: 0 2rem;
 }
 
-aside {
+.my-experience aside {
     width: 33.33%;
+    float: left;
+    padding: 0 2rem;
+}
+
+.skill-set section {
+    width: 20%;
+    float: left;
+    padding: 0 2rem;
+}
+
+.skill-set aside {
+    width: 20%;
+    float: left;
+    padding: 0 2rem;
+}
+
+.double-image {
+    width: 50%;
     float: left;
     padding: 0 2rem;
 }
