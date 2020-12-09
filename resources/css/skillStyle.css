@@ -1,5 +1,54 @@
+:root {
+    --number-elements: 5;
+}
 .skill-set::after {
     content: "";
     clear:both;
     display:block;
+}
+
+
+
+.skill-set aside {
+    width: calc(100% / var(--number-elements));
+    float: left;
+    padding: 0 1rem;
+}
+
+.arrows {
+    background: none;
+    border: none;
+    width: calc(100% / var(--number-elements) / 2);
+    float: left;
+    margin-top: var(--top-margin);
+    display: block;
+}
+
+.arrows img {
+    max-width: 50%;
+    min-width: var(--img-size) / 2;
+    height: var(--img-size) / 2;
+    border-radius: 0;
+    box-shadow: 0 0 0;
+}
+
+
+#skill1 {
+    display: block;
+}
+
+#skill2 {
+    display: block;
+}
+
+#skill3 {
+    display: block;
+}
+
+#skill4 {
+    display: block;
+}
+
+#skill5 {
+    display: none;
 }
