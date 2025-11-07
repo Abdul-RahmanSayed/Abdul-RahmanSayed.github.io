@@ -26,7 +26,20 @@ python3 server.py
 ```
 
 ## Recent Changes
-- **2025-01-07**: Initial Replit setup
+- **2025-11-07**: Skills Carousel Fix
+  - Completely rewrote the skill carousel JavaScript logic in `resources/js/skillPage.js`
+  - Fixed the confusing left/right navigation that was mentioned in the original TODO comment
+  - Carousel now properly cycles through all 5 skills, displaying 4 at a time
+  - Cleaner implementation with a sliding window approach
+- **2025-11-07**: Resume and Experience Updates
+  - Replaced resume with 2025 version (Abdul_Sayed_Resume_2025min_1762481377203.pdf)
+  - Updated work experience section with current positions:
+    - ProAutomated - Lead Field Service Engineer (February 2025 - Present)
+    - Invisible Technologies - Advanced AI Trainer Software Developer (February 2024 - February 2025)
+    - MessageGears - Software Development Lead Intern/Intern (May 2022 - August 2023)
+    - Georgia Institute of Technology - CS 2340 Undergraduate TA (January 2023 - December 2023)
+  - Installed LibreOffice for DOCX to PDF conversion
+- **2025-11-07**: Initial Replit setup
   - Created Python server with cache control headers
   - Configured workflow for automatic serving
   - Added .gitignore for Python and Replit files
