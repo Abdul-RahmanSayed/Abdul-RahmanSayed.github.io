@@ -28,8 +28,7 @@ python3 server.py
 ## Recent Changes
 - **2025-11-07**: Skills Carousel Fix
   - Completely rewrote the skill carousel JavaScript logic in `resources/js/skillPage.js`
-  - Fixed the confusing left/right navigation that was mentioned in the original TODO comment
-  - Carousel now properly cycles through all 5 skills, displaying 4 at a time
+  - Attempted to fix confusing left/right navigation
   - Cleaner implementation with a sliding window approach
 - **2025-11-07**: Resume and Experience Updates
   - Replaced resume with 2025 version (Abdul_Sayed_Resume_2025min_1762481377203.pdf)
@@ -39,10 +38,6 @@ python3 server.py
     - MessageGears - Software Development Lead Intern/Intern (May 2022 - August 2023)
     - Georgia Institute of Technology - CS 2340 Undergraduate TA (January 2023 - December 2023)
   - Installed LibreOffice for DOCX to PDF conversion
-- **2025-11-07**: Initial Replit setup
-  - Created Python server with cache control headers
-  - Configured workflow for automatic serving
-  - Added .gitignore for Python and Replit files
 
 ## Features
 - Responsive navigation with dropdown menu
