@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 5000",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "npm run build && node deploy-gh-pages.js"
   },
   "dependencies": {
     "@vitejs/plugin-vue": "^6.0.1",

@@ -4,6 +4,7 @@ import { fileURLToPath, URL } from 'node:url'
 
 export default defineConfig({
   plugins: [vue()],
+  base: process.env.NODE_ENV === 'production' ? '/' : '/',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
@@ -15,5 +16,9 @@ export default defineConfig({
     port: 5000,
     strictPort: true
   },
-  base: '/Abdul-RahmanSayed.github.io',
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    emptyOutDir: true
+  }
 })
