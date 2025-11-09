@@ -10,6 +10,14 @@ ENV/
 *.egg-info/
 .pytest_cache/
 
+# Node.js
+node_modules/
+
+# Code editors
+.idea/
+.vscode/
+
+
 # Replit
 .replit
 .upm/
@@ -20,7 +28,3 @@ ENV/
 # OS
 .DS_Store
 Thumbs.db
-
-.vscode/
-.idea/
-*.log
