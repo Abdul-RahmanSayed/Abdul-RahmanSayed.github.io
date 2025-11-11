@@ -9,8 +9,10 @@
         <div class="about-section">
           <h2>About Me</h2>
           <p class="intro-text">
-            I am currently a third year Computer Science student at Georgia Institute of Technology 
-            with concentrations in Intelligence and Media.
+            I am an engineer with a BS in Computer Science (Interactive Intelligence & Media) from Georgia Institute of Technology. 
+            I am results-driven with expertise in building scalable web applications and AI-powered solutions. I am skilled in 
+            developing intelligent and interactive systems using modern tech stacks. I have proven track record in agile development 
+            and cross-functional team collaboration.
           </p>
           
           <div class="concentrations">
