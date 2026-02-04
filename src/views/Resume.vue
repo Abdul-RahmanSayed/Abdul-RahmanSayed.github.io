@@ -4,7 +4,7 @@
       <h2 class="page-title">Resume</h2>
       
       <div class="resume-actions">
-        <a :href="resumePdf" download="Abdul_Sayed_Resume_2025.pdf" class="btn btn-primary">
+        <a :href="resumePdf" download="Abdul_Sayed_Resume_2026min.pdf" class="btn btn-primary">
           Download Resume
         </a>
       </div>
@@ -21,7 +21,7 @@ export default {
   name: 'Resume',
   data() {
     return {
-      resumePdf: new URL('@assets/pdfs/Abdul_Sayed_Resume_2025min_1762481377203.pdf', import.meta.url).href
+      resumePdf: new URL('@assets/pdfs/Abdul_Sayed_Resume_2026min.pdf', import.meta.url).href
     }
   }
 }

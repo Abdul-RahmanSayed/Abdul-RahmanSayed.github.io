@@ -27,32 +27,39 @@ export default {
     return {
       experiences: [
         {
+          title: 'Salesforce Developer',
+          company: 'SkillStorm',
+          duration: 'January 2026 - Present',
+          logo: new URL('@assets/images/skillstormLogo.jpg', import.meta.url).href,
+          description: 'Controls Commissioning & Coding: Implements and commissions complex control systems in QTS data centers, including PLC programming, EPMS/BMS functional testing, and network and Ignition troubleshooting to ensure seamless device communication for Microsoft and Meta systems. \nDebugging & Optimization: Analyzes and resolves software bugs in control systems, optimizing network configurations and automation logic for peak performance. \nTraining and Leading: Trained new field service engineers for EPMS/BMS functional testing and organized and worked with managers and on-site energy marshals to meet site-wide deadlines.'
+        },
+        {
           title: 'Lead Field Service Engineer',
           company: 'ProAutomated',
-          duration: 'February 2025 - Present',
-          logo: new URL('@assets/images/Georgia-Tech-New-logo-f.png', import.meta.url).href,
-          description: 'Controls Commissioning & Coding: Implements and commissions complex control systems in QTS data centers, including PLC programming, EPMS/BMS functional testing, and network and Ignition troubleshooting to ensure seamless device communication for Microsoft and Meta systems. Debugging & Optimization: Analyzes and resolves software bugs in control systems, optimizing network configurations and automation logic for peak performance. Training and Leading: Trained new field service engineers for EPMS/BMS functional testing and organized and worked with managers and on-site energy marshals to meet site-wide deadlines.'
+          duration: 'February 2025 - December 2025',
+          logo: new URL('@assets/images/proautomatedLogo.png', import.meta.url).href,
+          description: 'Controls Commissioning & Coding: Implements and commissions complex control systems in QTS data centers, including PLC programming, EPMS/BMS functional testing, and network and Ignition troubleshooting to ensure seamless device communication for Microsoft and Meta systems. \nDebugging & Optimization: Analyzes and resolves software bugs in control systems, optimizing network configurations and automation logic for peak performance. \nTraining and Leading: Trained new field service engineers for EPMS/BMS functional testing and organized and worked with managers and on-site energy marshals to meet site-wide deadlines.'
         },
         {
           title: 'Advanced AI Trainer Software Developer - Contractor',
           company: 'Invisible Technologies',
           duration: 'February 2024 - February 2025',
-          logo: new URL('@assets/images/Georgia-Tech-New-logo-f.png', import.meta.url).href,
-          description: 'Prompt Engineering: Analyzed and collaborated with the client\'s LLM systems and API to identify hallucinations in their models\' responses, and write and code those solutions in place of the faulty responses. Coding-Focused Hallucinations: Conduct rigorous analyses to assess the client\'s AI model accuracy, resilience, and safety by actively identifying and documenting hallucinations in Java, Typescript, Javascript, HTML, XML, and Python-related prompts, and recommending improvements for enhanced performance.'
+          logo: new URL('@assets/images/invisibleTechLogo.png', import.meta.url).href,
+          description: 'Prompt Engineering: Analyzed and collaborated with the client\'s LLM systems and API to identify hallucinations in their models\' responses, and write and code those solutions in place of the faulty responses. \nCoding-Focused Hallucinations: Conduct rigorous analyses to assess the client\'s AI model accuracy, resilience, and safety by actively identifying and documenting hallucinations in Java, Typescript, Javascript, HTML, XML, and Python-related prompts, and recommending improvements for enhanced performance.'
         },
         {
           title: 'Software Development Lead Intern & Software Development Intern',
           company: 'MessageGears',
           duration: 'May 2022 - August 2023',
-          logo: new URL('@assets/images/Georgia-Tech-New-logo-f.png', import.meta.url).href,
-          description: 'Full-Stack Portal Development: Contributed to a full-stack production portal delivering sales intelligence and engagement services. User Stories and Bug Fixes: Completed 27 team-assigned user stories across the company\'s main product using CI/CD. Resolved over 15 bugs, enhancing the reliability of data tables and user state management. Front-End Enhancements: Streamlined UI elements in a Single Page Application (SPA) using Angular. Converted 2 JSP pages to enhance user experience. QA Automation and Back-End Work: Conducted comprehensive QA automation tests (Cypress, Selenium, view, unit, REST-API) for each story. Modified data types, created back-end components in Java, and adjusted database tables using SQL scripts. Internship Leadership and Program Improvement: Mentored interns during onboarding, story development, and sprint planning. Prioritized and documented stories that product management gave to interns, contributing to a 96% improvement in the summer internship program from the previous summer\'s program.'
+          logo: new URL('@assets/images/messageGearsLogo.jpg', import.meta.url).href,
+          description: 'Full-Stack Portal Development: Contributed to a full-stack production portal delivering sales intelligence and engagement services. \nUser Stories and Bug Fixes: Completed 27 team-assigned user stories across the company\'s main product using CI/CD. Resolved over 15 bugs, enhancing the reliability of data tables and user state management. \nFront-End Enhancements: Streamlined UI elements in a Single Page Application (SPA) using Angular. Converted 2 JSP pages to enhance user experience. \nQA Automation and Back-End Work: Conducted comprehensive QA automation tests (Cypress, Selenium, view, unit, REST-API) for each story. Modified data types, created back-end components in Java, and adjusted database tables using SQL scripts. \nInternship Leadership and Program Improvement: Mentored interns during onboarding, story development, and sprint planning. Prioritized and documented stories that product management gave to interns, contributing to a 96% improvement in the summer internship program from the previous summer\'s program.'
         },
         {
           title: 'Objects and Design (CS 2340) Undergraduate Teaching Assistant',
           company: 'Georgia Institute of Technology',
           duration: 'January 2023 - December 2023',
           logo: new URL('@assets/images/Georgia-Tech-New-logo-f.png', import.meta.url).href,
-          description: 'Teaching and Curriculum Development: Instructed over 200 students per semester in object-oriented programming and AGILE methodologies. Developed lecture content on Git/Github usage and logic, including custom lecture slides. Administrative Contributions: Collaborated on project descriptions and requirements for term projects. Engaged in staff meetings to discuss curriculum enhancements and student assessments.'
+          description: 'Teaching and Curriculum Development: Instructed over 200 students per semester in object-oriented programming and AGILE methodologies. Developed lecture content on Git/Github usage and logic, including custom lecture slides. \nAdministrative Contributions: Collaborated on project descriptions and requirements for term projects. Engaged in staff meetings to discuss curriculum enhancements and student assessments.'
         }
       ]
     }
