@@ -97,11 +97,14 @@ npm run preview
 ```
 
 ### Deployment
-The project is configured for Replit autoscale deployment:
+The project is configured for autoscale deployment:
 - Build command: `npm run build`
 - Run command: `npx vite preview --host 0.0.0.0 --port 5000`
 
 ## Recent Changes
+
+### 2025-11-07: Home Page Update
+- Update front page Introduction to reflect 2025 status.
 
 ### 2025-11-07: Vue.js 3 Complete Rebuild
 - **Migration**: Completely rebuilt site from static HTML/CSS/JS to Vue.js 3 + Vite
@@ -123,10 +126,6 @@ The project is configured for Replit autoscale deployment:
 ### 2025-11-07: Resume and Experience Updates
 - Updated resume to 2025 version
 - Added 4 current work experience entries
-
-### 2025-11-07: Initial Replit Setup
-- Configured Python HTTP server (now replaced with Vite)
-- Set up workflow automation
 
 ## User Preferences
 - **Design**: Modern card-based layout with shadows and hover effects
