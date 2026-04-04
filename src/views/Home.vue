@@ -3,7 +3,7 @@
     <div class="container">
       <div class="hero-section">
         <div class="profile-image">
-          <img src="@assets/images/IMG_0938-475x475.jpg" alt="Abdul-Rahman Sayed">
+          <img src="https://res.cloudinary.com/dyd2wkozw/image/upload/IMG_0938-475x475.jpg" alt="Abdul-Rahman Sayed">
         </div>
         
         <div class="about-section">
@@ -17,11 +17,11 @@
           
           <div class="concentrations">
             <div class="concentration-card">
-              <img src="@assets/images/artificial-intelligence-3382507_1280.jpg" alt="Artificial Intelligence">
+              <img src="https://res.cloudinary.com/dyd2wkozw/image/upload/artificial-intelligence-3382507_1280.jpg" alt="Artificial Intelligence">
               <h3>Intelligence</h3>
             </div>
             <div class="concentration-card">
-              <img src="@assets/images/noun_Interaction Design_1916596 (1).png" alt="Interaction Design">
+              <img src="https://res.cloudinary.com/dyd2wkozw/image/upload/noun_Interaction%20Design_1916596%20(1).png" alt="Interaction Design">
               <h3>Media</h3>
             </div>
           </div>
