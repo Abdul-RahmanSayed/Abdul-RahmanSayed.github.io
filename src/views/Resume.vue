@@ -4,11 +4,11 @@
       <h2 class="page-title">Resume</h2>
       
       <div class="resume-actions">
-        <a :href="resumePdf" download="Abdul_Sayed_Resume_2026min.pdf" class="btn btn-primary">
+        <a :href="resumePdf" download="Abdul_Sayed_Resume_2026(a).pdf" class="btn btn-primary">
           Download Resume
         </a>
       </div>
-      
+
       <div class="resume-viewer">
         <embed :src="resumePdf" type="application/pdf" />
       </div>
@@ -21,7 +21,7 @@ export default {
   name: 'Resume',
   data() {
     return {
-      resumePdf: 'https://res.cloudinary.com/dyd2wkozw/raw/upload/Abdul_Sayed_Resume_2026min.pdf'
+      resumePdf: 'https://res.cloudinary.com/dyd2wkozw/raw/upload/Abdul_Sayed_Resume_2026%28a%29.pdf'
     }
   }
 }
