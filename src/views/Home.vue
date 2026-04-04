@@ -21,7 +21,7 @@
               <h3>Intelligence</h3>
             </div>
             <div class="concentration-card">
-              <img src="https://res.cloudinary.com/dyd2wkozw/image/upload/noun_Interaction%20Design_1916596%20(1).png" alt="Interaction Design">
+              <img src="https://res.cloudinary.com/dyd2wkozw/image/upload/v1775332246/noun_Interaction_Design_1916596_1.png" alt="Interaction Design">
               <h3>Media</h3>
             </div>
           </div>
