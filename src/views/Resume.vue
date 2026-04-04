@@ -21,7 +21,7 @@ export default {
   name: 'Resume',
   data() {
     return {
-      resumePdf: 'https://res.cloudinary.com/dyd2wkozw/raw/upload/Abdul_Sayed_Resume_2026%28a%29.pdf'
+      resumePdf: 'https://res.cloudinary.com/dyd2wkozw/raw/upload/portfolio/pdfs/Abdul_Sayed_Resume_2026%28a%29.pdf'
     }
   }
 }
