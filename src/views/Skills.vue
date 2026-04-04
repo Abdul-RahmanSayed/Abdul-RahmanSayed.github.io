@@ -5,7 +5,7 @@
       
       <div class="carousel-container">
         <button class="arrow-btn left" @click="moveLeft" aria-label="Previous skill">
-          <img src="@assets/images/Dark_blue_left_arrow.svg.png" alt="Previous">
+          <img src="https://res.cloudinary.com/dyd2wkozw/image/upload/Dark_blue_left_arrow.svg.png" alt="Previous">
         </button>
         
         <div class="skills-carousel">
@@ -23,7 +23,7 @@
         </div>
         
         <button class="arrow-btn right" @click="moveRight" aria-label="Next skill">
-          <img src="@assets/images/Dark_blue_right_arrow.svg.png" alt="Next">
+          <img src="https://res.cloudinary.com/dyd2wkozw/image/upload/Dark_blue_right_arrow.svg.png" alt="Next">
         </button>
       </div>
     </div>
@@ -38,23 +38,23 @@ export default {
       skills: [
         {
           name: 'Java',
-          icon: new URL('@assets/images/174-1746684_java-java-logo-black-png-transparent-png.png', import.meta.url).href
+          icon: 'https://res.cloudinary.com/dyd2wkozw/image/upload/174-1746684_java-java-logo-black-png-transparent-png.png'
         },
         {
           name: 'HTML, CSS, and Javascript',
-          icon: new URL('@assets/images/html5-logo-devextreme-multi-purpose-controls-html-javascript-3_1_white.png', import.meta.url).href
+          icon: 'https://res.cloudinary.com/dyd2wkozw/image/upload/html5-logo-devextreme-multi-purpose-controls-html-javascript-3_1_white.png'
         },
         {
           name: 'Git and Github',
-          icon: new URL('@assets/images/30b150cd489202db131009ac9540cec0.png', import.meta.url).href
+          icon: 'https://res.cloudinary.com/dyd2wkozw/image/upload/30b150cd489202db131009ac9540cec0.png'
         },
         {
           name: 'Unix',
-          icon: new URL('@assets/images/Unix.png', import.meta.url).href
+          icon: 'https://res.cloudinary.com/dyd2wkozw/image/upload/Unix.png'
         },
         {
           name: 'LaTeX',
-          icon: new URL('@assets/images/t5VF4.png', import.meta.url).href
+          icon: 'https://res.cloudinary.com/dyd2wkozw/image/upload/t5VF4.png'
         }
       ],
       visibleSkills: [0, 1, 2, 3]

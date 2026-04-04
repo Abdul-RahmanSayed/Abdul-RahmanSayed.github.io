@@ -18,12 +18,16 @@ node_modules/
 .vscode/
 
 
-# Replit
+# Tools
+.claude/
 .replit
 .upm/
 .cache/
 .config/
 .local/
+
+# Assets (hosted on Cloudinary)
+src/assets/
 
 # OS
 .DS_Store

@@ -21,7 +21,7 @@ export default {
   name: 'Resume',
   data() {
     return {
-      resumePdf: new URL('@assets/pdfs/Abdul_Sayed_Resume_2026min.pdf', import.meta.url).href
+      resumePdf: 'https://res.cloudinary.com/dyd2wkozw/raw/upload/Abdul_Sayed_Resume_2026min.pdf'
     }
   }
 }
