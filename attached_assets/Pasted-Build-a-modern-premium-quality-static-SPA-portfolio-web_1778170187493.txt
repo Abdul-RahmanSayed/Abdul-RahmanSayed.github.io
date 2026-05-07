@@ -1,0 +1,361 @@
+Build a modern, premium-quality static SPA portfolio website for a Computer Science 
+graduate focused on Front-End Development and Software Engineering opportunities.
+
+═══════════════════════════════════════════
+PERSONAL INFORMATION (use exactly as written)
+═══════════════════════════════════════════
+Name: Abdul-Rahman Sayed
+Email: abdulsayed9@gmail.com
+Phone: 770-568-1773
+Location: Atlanta, GA
+LinkedIn: https://linkedin.com/in/abdul-sayed-84643513a/
+GitHub: https://github.com/Abdul-RahmanSayed
+Headshot: [attached — use in Hero and About sections]
+Resume PDF: [attached — embed in Resume section and provide as download]
+
+Do NOT use placeholder data anywhere. Pull all content (projects, skills, work 
+experience, education) directly from the attached resume.
+
+═══════════════════════════════════════════
+PRIMARY GOAL
+═══════════════════════════════════════════
+Create a recruiter-friendly portfolio that visually demonstrates strong front-end 
+engineering skills, modern UI/UX practices, and professional software development 
+ability. The site must feel custom-built, polished, and production-quality — not 
+like a generic bootcamp template.
+
+This portfolio will be sent directly to prospective employers and linked on the 
+resume. It must make a strong first impression within 5 seconds.
+
+═══════════════════════════════════════════
+TECHNOLOGY STACK
+═══════════════════════════════════════════
+- Vue.js 3 with Composition API
+- Vue Router for routed SPA navigation
+- Vite build pipeline
+- Component-based architecture
+- CSS custom properties (design tokens)
+- Mobile-first responsive design
+- Static deployment compatible with Vercel, Netlify, and GitHub Pages
+- GitHub Actions CI/CD workflow for auto-deploy to GitHub Pages on push to main
+
+═══════════════════════════════════════════
+DESIGN SYSTEM
+═══════════════════════════════════════════
+Color Palette (CSS custom properties):
+  --color-bg-dark: #0a0a0f
+  --color-bg-card: #111118
+  --color-accent: #6c63ff        /* primary purple */
+  --color-accent-secondary: #00d4aa  /* teal highlight */
+  --color-text-primary: #f0f0f5
+  --color-text-muted: #8888aa
+  --color-border: rgba(108, 99, 255, 0.15)
+
+Typography:
+  --font-display: 'Inter', sans-serif
+  --font-mono: 'JetBrains Mono', monospace
+  --font-size-hero: clamp(2.5rem, 6vw, 5rem)
+  --font-size-section: clamp(1.8rem, 3vw, 2.5rem)
+
+Spacing scale: 4px base unit (4, 8, 12, 16, 24, 32, 48, 64, 96, 128px)
+
+Shadows:
+  --shadow-card: 0 4px 24px rgba(108, 99, 255, 0.08)
+  --shadow-hover: 0 8px 40px rgba(108, 99, 255, 0.2)
+
+Border radius:
+  --radius-sm: 6px
+  --radius-md: 12px
+  --radius-lg: 20px
+
+Animation timing:
+  --transition-fast: 150ms ease
+  --transition-base: 250ms ease
+  --transition-slow: 400ms ease
+
+Dark mode is the default. Provide a light mode toggle that switches to a clean 
+off-white (#f5f5fa) background with dark text. Persist preference to localStorage.
+
+═══════════════════════════════════════════
+DESIGN INSPIRATION
+═══════════════════════════════════════════
+Use these as reference for layout quality, spacing, polish, and aesthetics:
+- https://brittanychiang.com
+- https://leerob.io
+- https://rauno.me
+- https://vuejs.org
+
+Prioritize: clean typography, generous spacing, subtle motion, and recruiter 
+readability. Do NOT use excessive animations or gimmicks.
+
+═══════════════════════════════════════════
+NAVIGATION
+═══════════════════════════════════════════
+- Sticky navbar with blur/frosted glass background on scroll
+- Logo: "AS" monogram on left, nav links on right
+- Links: Home, About, Skills, Projects, Resume, Contact
+- Desktop: hover dropdown supported where needed
+- Mobile: hamburger menu with smooth slide-in drawer
+- Active route highlighting
+- Smooth scroll transitions between sections
+
+═══════════════════════════════════════════
+SECTIONS / PAGES
+═══════════════════════════════════════════
+
+── 1. HERO ──────────────────────────────
+- Headshot (circular, with subtle glowing border using accent color)
+- Typed text animation cycling through:
+    "Front-End Developer"
+    "Software Engineer"
+    "Vue.js Specialist"
+    "Georgia Tech Graduate"
+- Short tagline: "Building polished, performant web experiences."
+- Three CTA buttons:
+    [View Projects]  →  scrolls to Projects
+    [Download Resume]  →  downloads PDF
+    [Contact Me]  →  scrolls to Contact
+- Subtle animated gradient or particle background (keep it light/performance-safe)
+
+── 2. ABOUT ─────────────────────────────
+- Headshot (if not used in hero, use here)
+- Professional summary pulled from resume
+- Education: Georgia Institute of Technology, B.S. Computer Science, 2020–2024
+    Threads: Intelligence and Media
+    Honors: Graduation with Honors, Dean's List
+    Certification: Microsoft Certified Azure Fundamentals (AZ-900), April 2026
+- Career goal statement
+- Personal brand statement emphasizing front-end + full-stack background
+- Timeline component showing education + work experience chronologically
+
+── 3. SKILLS ────────────────────────────
+Visually categorized skill grid using cards + badges with subtle hover effects.
+Pull all skills from the resume. Organize into these categories:
+
+  Front-End Languages:
+    JavaScript, TypeScript, HTML, CSS
+
+  Frameworks & Libraries:
+    Vue.js 3, React, Angular, D3.js, p5.js
+
+  Back-End & Languages:
+    Java, Python, Node.js, C#, Apex
+
+  Databases:
+    SQL (MySQL), MongoDB, NoSQL, SOQL, SOSL
+
+  Testing & QA:
+    Cypress, Selenium, Mockito, TestFX, Jasmine
+
+  Tooling & DevOps:
+    Git, GitHub, GitHub Actions, Docker, Gradle, Jira, Confluence, Vite
+
+  Cloud & Platforms:
+    Microsoft Azure (AZ-900), Salesforce, Apache Tomcat
+
+  Concepts:
+    OOP, Agile/Scrum, REST APIs, CI/CD, Machine Learning, Computer Vision,
+    Data Structures & Algorithms
+
+── 4. PROJECTS ──────────────────────────
+THIS IS THE MOST IMPORTANT SECTION.
+
+Use a responsive masonry/grid card layout. Each card must include:
+  - Project title
+  - Visual placeholder (gradient thumbnail styled to match the tech stack colors)
+  - Detailed description
+  - Tech stack badges
+  - Key accomplishments (bullet points)
+  - GitHub link button
+  - Live demo link button (show as disabled/grayed if unavailable)
+  - Polished hover effect: lift + glow + reveal overlay with quick summary
+
+Include ALL of the following projects from the resume:
+
+  PROJECT 1: Portfolio Website
+  URL: https://abdul-rahmansayed.github.io/
+  GitHub: https://github.com/Abdul-RahmanSayed
+  Description: Responsive multi-page SPA built with Vue.js 3, Vue Router, and Vite.
+  Stack: Vue.js 3, Vue Router, Vite, CSS Custom Properties, GitHub Actions
+  Accomplishments:
+    - Reusable component architecture with nav dropdown (hover + touch support)
+    - Embedded PDF resume viewer with dynamic asset import and direct download
+    - Design system using CSS custom properties for color, spacing, typography
+    - Automated CI/CD deployment to GitHub Pages via GitHub Actions
+
+  PROJECT 2: GAN-Based Image Colorization & Upscaling
+  (formerly titled "Artificial Neural Intelligence Machine Entity")
+  Timeline: Sep 2022 – Dec 2022
+  Description: Collaborative ML project to colorize and upscale low-resolution 
+  black-and-white face images using a Generative Adversarial Network.
+  Stack: Python, TensorFlow, PyTorch, GAN
+  Accomplishments:
+    - Built in a team of 4 using a GAN architecture to reconstruct degraded images
+    - Ground-truth images derived from original dataset for training validation
+    - Handled image preprocessing pipeline for downscaled and de-colored input data
+
+  PROJECT 3: Interactive Parallel Coordinate Plot
+  Timeline: Dec 2022
+  Description: Data visualization tool built with D3.js for interactive 
+  multidimensional data exploration.
+  Stack: D3.js, JavaScript, HTML, SVG, CSS
+  Accomplishments:
+    - Built fully interactive parallel coordinate plot from a CSV dataset
+    - Implemented real-time user-driven data filtering and dynamic axis interaction
+    - Designed responsive SVG layout with clean visual hierarchy
+
+  PROJECT 4: Jim's Dungeon — Dungeon Crawler Game
+  Timeline: Jan 2020 – Aug 2020
+  Description: Team-led dungeon adventure game with procedural map generation,
+  built across 6 Agile milestones.
+  Stack: Java, JavaFX, Maven, TestFX
+  Accomplishments:
+    - Led a team of 5 using Agile practices across 6 sprint milestones
+    - Implemented procedural generation for dynamic dungeon map construction
+    - Built multi-page application with configurable initial game state
+    - Wrote functional and unit tests using TestFX for reliability validation
+
+── 5. EXPERIENCE ────────────────────────
+Timeline/card layout showing work history in reverse chronological order.
+Pull directly from resume. Include:
+
+  - SkillStorm | Salesforce Developer | Jan 2026 – Present
+  - ProAutomated | Automation & Controls Engineer | Feb 2025 – Dec 2025
+  - Invisible Technologies | AI Trainer / Software Developer (Contract) | Feb 2024 – Feb 2025
+  - MessageGears | Software Development Intern → Lead Intern | May 2022 – Aug 2023
+  - Georgia Tech | CS Teaching Assistant (CS 2340) | Jan 2023 – Dec 2023
+
+Each entry:
+  - Company name + role + date range
+  - Location
+  - 2–3 most impactful bullet points (pulled from resume)
+  - Tech stack tags where applicable
+
+── 6. RESUME ────────────────────────────
+- Embedded PDF resume viewer (responsive, scrollable)
+- Dynamic asset import for the PDF file
+- Prominent "Download Resume" button
+- Fallback message + direct link if PDF viewer fails to load
+
+── 7. CONTACT ───────────────────────────
+- Email: abdulsayed9@gmail.com (mailto link)
+- LinkedIn: https://linkedin.com/in/abdul-sayed-84643513a/
+- GitHub: https://github.com/Abdul-RahmanSayed
+- Optional: clean contact form UI (name, email, message) — frontend only, no backend
+- Icons for each platform
+- Clean card/panel layout, not a cluttered list
+
+═══════════════════════════════════════════
+COMPONENT ARCHITECTURE
+═══════════════════════════════════════════
+Create the following reusable components:
+
+  - Navbar.vue
+  - MobileMenu.vue
+  - Footer.vue
+  - HeroSection.vue
+  - TypedText.vue          ← typed animation component
+  - SectionContainer.vue
+  - ProjectCard.vue
+  - SkillBadge.vue
+  - SkillCategory.vue
+  - ExperienceCard.vue
+  - TimelineItem.vue
+  - ResumeViewer.vue
+  - ThemeToggle.vue
+  - ScrollReveal.vue       ← wrapper for scroll-triggered fade-in
+  - ContactSection.vue
+
+═══════════════════════════════════════════
+FOLDER STRUCTURE
+═══════════════════════════════════════════
+src/
+  assets/
+    resume.pdf
+    headshot.jpg
+    fonts/
+  components/
+    layout/
+      Navbar.vue
+      MobileMenu.vue
+      Footer.vue
+      SectionContainer.vue
+      ThemeToggle.vue
+    sections/
+      HeroSection.vue
+      AboutSection.vue
+      SkillsSection.vue
+      ProjectsSection.vue
+      ExperienceSection.vue
+      ResumeSection.vue
+      ContactSection.vue
+    ui/
+      ProjectCard.vue
+      SkillBadge.vue
+      SkillCategory.vue
+      ExperienceCard.vue
+      TimelineItem.vue
+      ResumeViewer.vue
+      TypedText.vue
+      ScrollReveal.vue
+  router/
+    index.js
+  views/
+    HomeView.vue
+  App.vue
+  main.js
+  style.css             ← global CSS custom properties / design tokens
+
+═══════════════════════════════════════════
+TECHNICAL REQUIREMENTS
+═══════════════════════════════════════════
+- Scroll reveal animations: fade-up on section entry using Intersection Observer
+- Typed text animation in hero (vanilla JS or vue-typed-js)
+- Lazy loading for images and heavy components
+- SEO: proper <title>, meta description, og:image, og:title in index.html
+- Favicon using "AS" monogram
+- Performance: no unnecessary dependencies; keep bundle lean
+- Accessibility: semantic HTML, keyboard navigation, ARIA labels, WCAG AA contrast
+- No broken links — disable GitHub/demo buttons gracefully if URL is not available
+- All external links open in new tab with rel="noopener noreferrer"
+
+═══════════════════════════════════════════
+ENHANCEMENTS (implement these specifically)
+═══════════════════════════════════════════
+1. Scroll reveal fade-up animations on all sections
+2. Typed text animation in the hero
+3. Frosted glass navbar on scroll
+4. Skill badge hover glow effect
+5. Project card lift + glow on hover
+6. Dark/light mode toggle with localStorage persistence
+
+═══════════════════════════════════════════
+DEPLOYMENT
+═══════════════════════════════════════════
+- Target: GitHub Pages (primary), Vercel/Netlify (compatible)
+- Include GitHub Actions workflow: .github/workflows/deploy.yml
+  - Trigger: push to main
+  - Build: npm run build
+  - Deploy: peaceiris/actions-gh-pages to gh-pages branch
+- Set base in vite.config.js to match GitHub repo name
+
+═══════════════════════════════════════════
+DELIVERABLES
+═══════════════════════════════════════════
+- Complete Vue 3 / Vite project, production-ready
+- All components implemented and wired up
+- No placeholder content — all real data from attached resume
+- README.md with:
+    - Project overview
+    - Local dev setup (npm install, npm run dev)
+    - Build instructions (npm run build)
+    - Deployment instructions for GitHub Pages, Vercel, and Netlify
+- .gitignore for Node/Vite projects
+
+═══════════════════════════════════════════
+CRITICAL REQUIREMENT
+═══════════════════════════════════════════
+The final result must look like a high-quality custom portfolio created by a 
+strong front-end engineer competing for roles at top software companies. 
+It must NOT look AI-generated, template-based, or generic.
+Every section must feel intentional, polished, and professionally crafted.

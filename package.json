@@ -1,20 +1,16 @@
 {
   "name": "abdul-rahman-portfolio",
   "version": "2.0.0",
-  "type": "module",
+  "license": "MIT",
   "scripts": {
-    "dev": "vite --host 0.0.0.0 --port 5000",
-    "build": "vite build",
-    "preview": "vite preview",
-    "deploy": "npm run build && node deploy-gh-pages.js"
+    "preinstall": "sh -c 'rm -f package-lock.json yarn.lock; case \"$npm_config_user_agent\" in pnpm/*) ;; *) echo \"Use pnpm instead\" >&2; exit 1 ;; esac'",
+    "build": "pnpm run typecheck && pnpm -r --if-present run build",
+    "typecheck:libs": "tsc --build",
+    "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck"
   },
-  "dependencies": {
-    "@vitejs/plugin-vue": "^6.0.1",
-    "vite": "^7.2.2",
-    "vue": "^3.5.24",
-    "vue-router": "^4.6.3"
-  },
+  "private": true,
   "devDependencies": {
-    "patch-package": "^8.0.1"
+    "typescript": "~5.9.2",
+    "prettier": "^3.8.1"
   }
 }
