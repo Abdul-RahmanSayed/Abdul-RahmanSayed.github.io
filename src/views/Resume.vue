@@ -4,7 +4,7 @@
       <h2 class="page-title">Resume</h2>
       
       <div class="resume-actions">
-        <a :href="resumePdf" download="Abdul_Sayed_Resume_2026(a).pdf" class="btn btn-primary">
+        <a :href="resumePdf" download="Sayed_AbdulRahman_Resume_072426a.pdf" class="btn btn-primary">
           Download Resume
         </a>
       </div>
@@ -21,7 +21,7 @@ export default {
   name: 'Resume',
   data() {
     return {
-      resumePdf: 'https://res.cloudinary.com/dyd2wkozw/image/upload/v1775332219/Abdul_Sayed_Resume_2026_a.pdf'
+      resumePdf: 'https://res.cloudinary.com/dyd2wkozw/image/upload/v1785798732/Sayed_AbdulRahman_Resume_072426a.pdf'
     }
   }
 }
