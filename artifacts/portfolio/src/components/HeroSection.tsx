@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, ArrowRight, Download } from 'lucide-react';
 import headshotPath from "@assets/Headshot3_1778170238565.jpg";
-import resumePdfPath from "@assets/Sayed_AbdulRahman_Resume_1778170233910.pdf";
 import { Button } from './ui/button';
+
+const resumePdfPath = "https://res.cloudinary.com/dyd2wkozw/image/upload/v1785798732/Sayed_AbdulRahman_Resume_072426a.pdf";
 
 export function HeroSection() {
   const roles = ["Front-End Developer", "Software Engineer", "Vue.js Specialist", "Georgia Tech Graduate"];

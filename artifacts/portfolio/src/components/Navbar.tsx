@@ -35,7 +35,7 @@ export function Navbar() {
   }, [isDark]);
 
   useEffect(() => {
-    const observers = [];
+    const observers: IntersectionObserver[] = [];
     const sections = ['hero', 'about', 'skills', 'projects', 'experience', 'resume', 'contact'];
     
     sections.forEach(section => {

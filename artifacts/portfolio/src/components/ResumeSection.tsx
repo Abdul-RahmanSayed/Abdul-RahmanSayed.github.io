@@ -2,7 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Download } from 'lucide-react';
 import { Button } from './ui/button';
-import resumePdfPath from "@assets/Sayed_AbdulRahman_Resume_1778170233910.pdf";
+
+const resumePdfPath = "https://res.cloudinary.com/dyd2wkozw/image/upload/v1785798732/Sayed_AbdulRahman_Resume_072426a.pdf";
 
 export function ResumeSection() {
   return (
