@@ -4,66 +4,80 @@ import { motion } from 'framer-motion';
 const experienceData = [
   {
     id: 1,
-    company: "SkillStorm",
-    role: "Salesforce Developer",
-    date: "January 2026 – Present",
-    location: "Atlanta, GA",
+    company: "iD Tech",
+    role: "Part-Time Instructor",
+    date: "May 2020 - August 2021; April 2026 - Present",
+    location: "Remote / Alpharetta, GA",
     bullets: [
-      "Supports design of a Salesforce platform using custom objects, relationships, Flows, and Apex, emphasizing data standardization and scalable schemas",
-      "Designs and maintains structured data models within Salesforce, focusing on normalized schemas and transformation logic for downstream SQL-based pipelines"
+      "Teach private and group project-based lessons in Python, Java, JavaScript/p5.js, AI, and machine learning using Google Colab, PyCharm, VS Code, scikit-learn, OpenAI API, and Ollama/Llama 3",
+      "Guide students through chatbots, AI assistants, local LLM setup, file and JSON workflows, Java applications, and Unity/C#, Godot, Minecraft, and p5.js game projects while reinforcing object-oriented design and debugging",
+      "Troubleshoot language, JDK, IDE, package, library, API, and cross-platform setup issues while producing lesson plans, technical explanations, progress summaries, and next-step guidance"
     ],
-    tags: ["Salesforce", "Apex", "SOQL", "SQL", "Data Modeling"]
+    tags: ["Python", "Java", "JavaScript", "p5.js", "C#", "AI/ML", "scikit-learn", "OpenAI API", "Ollama", "Unity", "Godot"]
   },
   {
     id: 2,
-    company: "ProAutomated",
-    role: "Automation & Controls Engineer",
-    date: "February – December 2025",
+    company: "SkillStorm",
+    role: "Salesforce Developer",
+    date: "January 2026 - April 2026",
     location: "Atlanta, GA",
     bullets: [
-      "Implements and commissions complex control systems in QTS data centers including PLC programming, EPMS/BMS functional testing, and network troubleshooting for Microsoft and Meta systems",
-      "Analyzes and resolves software bugs in control systems, optimizing network configurations and automation logic for peak performance",
-      "Trains new field service engineers for EPMS/BMS functional testing"
+      "Supported Salesforce platform design using custom objects, relationships, Flows, Apex, normalized schemas, standardized fields, and transformation logic to improve data integrity, workflow automation, reporting, and downstream SQL readiness",
+      "Position concluded after project funding was withdrawn; separation was unrelated to performance"
     ],
-    tags: ["PLC", "EPMS/BMS", "Network Troubleshooting", "Automation"]
+    tags: ["Salesforce", "Apex", "Flows", "SQL", "Data Modeling"]
   },
   {
     id: 3,
-    company: "Invisible Technologies",
-    role: "Advanced AI Trainer / Software Developer (Contract)",
-    date: "February 2024 – February 2025",
-    location: "Remote",
+    company: "ProAutomated",
+    role: "Field Service Engineer",
+    date: "February 2025 - December 2025",
+    location: "Atlanta, GA",
     bullets: [
-      "Analyzed and collaborated with client's LLM systems and API to identify hallucinations in model responses",
-      "Conducted rigorous analyses assessing AI model accuracy in Java, Spring, TypeScript, JavaScript, HTML, and Python-related prompts",
-      "Documented hallucinations and recommended improvements for enhanced model performance"
+      "Implemented and commissioned control systems in QTS data centers, including PLC programming, EPMS/BMS functional testing, and network troubleshooting for Microsoft and Meta systems",
+      "Analyzed and resolved control-system software defects while optimizing network configurations and automation logic for peak performance",
+      "Trained new field service engineers and coordinated with managers and on-site energy marshals to meet site-wide deadlines"
     ],
-    tags: ["Python", "Java", "TypeScript", "JavaScript", "Prompt Engineering", "LLMs"]
+    tags: ["PLC", "EPMS/BMS", "Network Troubleshooting", "Controls", "Technical Leadership"]
   },
   {
     id: 4,
+    company: "Invisible Technologies",
+    role: "Advanced AI Trainer Software Developer - Contractor",
+    date: "February 2024 - February 2025",
+    location: "Remote",
+    bullets: [
+      "Analyzed client LLM systems and API workflows to identify hallucinations, then wrote and coded corrected technical solutions in place of faulty responses",
+      "Assessed AI model accuracy, resilience, and safety by identifying and documenting hallucinations in Java, Spring, Spring Boot, TypeScript, JavaScript, HTML, XML, and Python prompts",
+      "Recommended improvements to increase model reliability and technical performance"
+    ],
+    tags: ["LLMs", "Prompt Engineering", "Python", "Java", "Spring Boot", "TypeScript", "JavaScript", "XML"]
+  },
+  {
+    id: 5,
     company: "MessageGears",
-    role: "Software Development Lead Intern (→ Lead Intern)",
-    date: "May 2022 – August 2023",
+    role: "Software Development Intern / Lead Intern",
+    date: "May 2022 - August 2022; May 2023 - August 2023",
     location: "Atlanta, GA",
     bullets: [
-      "Contributed to a production Java and TypeScript enterprise messaging platform with Angular SPA frontend and Java backend services",
-      "Completed 27+ Jira user stories and resolved 15+ bugs in UI behavior, scheduled jobs, personalization attributes, and pagination",
-      "Developed and executed automated tests using Selenium and Cypress; mentored incoming interns, improving program completion 96%"
+      "Contributed to a production Java and TypeScript enterprise messaging platform with an Angular SPA, Java backend services, REST APIs, JSON/XML data exchange, and relational database interactions",
+      "Completed 27+ Jira stories and resolved 15+ defects across UI behavior, scheduled jobs, personalization, pagination, backend components, and SQL-backed features",
+      "Worked in a Docker-based CI/CD environment with Gradle and Apache Tomcat and developed Selenium and Cypress UI, integration, and REST API tests",
+      "Mentored interns through onboarding, story breakdown, debugging, and sprint execution, contributing to a 96% improvement in internship program completion metrics"
     ],
     tags: ["Angular", "TypeScript", "Java", "SQL", "Selenium", "Cypress", "Docker", "Gradle"]
   },
   {
-    id: 5,
+    id: 6,
     company: "Georgia Institute of Technology",
-    role: "CS Teaching Assistant (CS 2340)",
-    date: "January – December 2023",
+    role: "Objects and Design (CS 2340) Undergraduate Teaching Assistant",
+    date: "January 2023 - December 2023",
     location: "Atlanta, GA",
     bullets: [
-      "Instructed 200+ students per semester in OOP and Agile methodologies; developed lecture content on Git/GitHub",
-      "Contributed to building the instructor example term project (Android Studio / Maven-based Java with JavaFX, TestFX, Mockito)"
+      "Instructed more than 200 students per semester in object-oriented programming and Agile methodologies and developed custom lecture content covering Git and GitHub",
+      "Collaborated on project descriptions and requirements and helped build the instructor example mobile and desktop application using Android Studio or Maven-based Java, JavaFX, TestFX, and Mockito"
     ],
-    tags: ["Java", "JavaFX", "TestFX", "Mockito", "Git", "Agile"]
+    tags: ["Java", "Object-Oriented Design", "JavaFX", "TestFX", "Mockito", "Git", "Agile"]
   }
 ];
 

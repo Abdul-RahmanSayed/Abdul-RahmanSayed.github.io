@@ -3,16 +3,16 @@ import { motion } from 'framer-motion';
 
 const skillsData = [
   {
-    category: "Front-End Languages",
-    skills: ["JavaScript", "TypeScript", "HTML", "CSS"]
+    category: "Front-End Development",
+    skills: ["JavaScript", "TypeScript", "HTML", "CSS", "React", "Angular", "Vue.js", "p5.js", "D3.js"]
   },
   {
-    category: "Frameworks & Libraries",
-    skills: ["Vue.js 3", "React", "Angular", "D3.js", "p5.js"]
+    category: "Back-End & Application",
+    skills: ["Python", "Java", "Apex", "Node.js", "C#", "JavaFX", "REST APIs", "Web Service Protocols", "JSON"]
   },
   {
-    category: "Back-End & Languages",
-    skills: ["Java", "Python", "Node.js", "C#", "Apex"]
+    category: "AI & Machine Learning",
+    skills: ["PyTorch", "TensorFlow", "scikit-learn", "Deep Learning", "Supervised Learning", "Regression", "Classification", "Computer Vision", "Knowledge-Based AI", "Game AI"]
   },
   {
     category: "Databases",
@@ -20,19 +20,19 @@ const skillsData = [
   },
   {
     category: "Testing & QA",
-    skills: ["Cypress", "Selenium", "Mockito", "TestFX", "Jasmine"]
+    skills: ["Mockito", "Integration Testing", "End-to-End Testing", "Cypress", "Selenium", "TestFX", "Jasmine"]
   },
   {
-    category: "Tooling & DevOps",
-    skills: ["Git", "GitHub", "GitHub Actions", "Docker", "Gradle", "Jira", "Confluence", "Vite"]
+    category: "Developer Tooling",
+    skills: ["Git", "GitHub", "Bitbucket", "Docker", "Gradle", "Apache Tomcat", "Jira", "Confluence", "VS Code", "IntelliJ", "Vim", "PyCharm", "Google Colab"]
   },
   {
-    category: "Cloud & Platforms",
-    skills: ["Microsoft Azure (AZ-900)", "Salesforce", "Apache Tomcat"]
+    category: "Platforms & APIs",
+    skills: ["Microsoft Azure (AZ-900)", "Salesforce", "OpenAI API", "Ollama API", "Unity", "Godot", "OpenGL", "GLSL"]
   },
   {
-    category: "Concepts",
-    skills: ["OOP", "Agile/Scrum", "REST APIs", "CI/CD", "Machine Learning", "Computer Vision", "Data Structures & Algorithms"]
+    category: "Core Concepts",
+    skills: ["Object-Oriented Design", "Agile", "Scrum", "Data Structures", "Algorithms", "Dynamic Programming", "CI/CD"]
   }
 ];
 
