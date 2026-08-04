@@ -28,7 +28,7 @@ Those supporting and legacy areas are not part of the deployed website. This dis
 | Data source | Hardcoded arrays and text inside React components |
 | Backend usage | None |
 | Database usage | None |
-| Contact form | Visual only; submission is deliberately prevented |
+| Contact form | Native validation plus a pre-filled `mailto:` draft; no backend delivery |
 | Deployment | GitHub Actions to GitHub Pages on pushes to `master` |
 | Automated tests | None currently present |
 
@@ -201,13 +201,13 @@ File: `artifacts/portfolio/src/components/ContactSection.tsx`
 
 Three contact cards open email, LinkedIn, and GitHub. External web links open a new tab and include `rel="noopener noreferrer"`; email uses a `mailto:` link.
 
-The section also contains name, email, and message fields. This form is intentionally presentation-only:
+The section also contains uncontrolled name, email, and message fields. Each field has a form `name`, is required, and has a maximum length; the name and email fields also provide browser autocomplete hints. The email input uses `type="email"`, so the browser blocks malformed addresses before the submit handler runs.
 
-```tsx
-onSubmit={(e) => e.preventDefault()}
-```
+`handleSubmit` reads the fields through `FormData`, trims their values, and constructs a URL-encoded `mailto:` URL addressed to `abdulsayed9@gmail.com`. The generated draft includes a subject based on the visitor's name and a body containing the visitor's name, reply address, and message. Assigning that URL to `window.location.href` asks the operating system or browser to open the visitor's configured email application.
 
-The inputs are uncontrolled, no validation rules are attached, no toast is created, and no message is sent to an API or third-party form service. Clicking **Send Message** currently produces no visible result.
+The component stores the generated draft URL in React state. After submission it renders an accessible `role="status"` message with an `aria-live="polite"` fallback link, allowing the visitor to retry opening the same pre-filled draft if the initial handoff is not visible.
+
+No message is posted to the Express scaffold or a third-party form service, and the site receives no delivery confirmation. The visitor must review and send the draft from their own email application. Direct background delivery would require a deployed backend or an external form provider.
 
 ### 4.9 Footer
 
@@ -297,13 +297,13 @@ The headshot and PDF are imported and emitted with build-managed URLs. Files in 
 
 `opengraph.jpg` is present but is not referenced by an Open Graph meta tag. The favicon is referenced as the public asset `/favicon.svg`; if the deployment strategy changes, built asset URLs should be rechecked with the configured Vite base.
 
-The production site also depends on Google Fonts at page load. Social links, email links, and the live portfolio project link are external navigation only; the application does not fetch their data.
+The production site also depends on Google Fonts at page load. Social links, the contact form's generated `mailto:` URL, other email links, and the live portfolio project link are external navigation only; the application does not fetch their data.
 
 ### 5.7 Test hooks and accessibility
 
 Important controls include `data-testid` attributes, which make future browser tests easier to target. No test suite currently consumes them.
 
-The code uses semantic sections, headings, labels, buttons, anchors, alternate image text, and safe external-link attributes. Some icon-only links and mobile controls do not have explicit accessible names, and animation does not yet respect reduced-motion preferences. Those are current gaps, not hidden framework behavior.
+The code uses semantic sections, headings, labels, buttons, anchors, alternate image text, and safe external-link attributes. The contact form also uses native required/email validation and announces its email-draft fallback through a polite live status region. Some icon-only links and mobile controls do not have explicit accessible names, and animation does not yet respect reduced-motion preferences. Those are current gaps, not hidden framework behavior.
 
 ## 6. Production frontend file responsibilities
 
@@ -514,7 +514,8 @@ The API server and database are not deployed by this workflow. GitHub Pages cann
 | Change responsive layout | Tailwind classes in the affected component |
 | Add a real routed page | add a page component and a Wouter `<Route>` in `App.tsx` |
 | Add an API endpoint | OpenAPI spec, generated code, API route, and deployment infrastructure |
-| Make the contact form send | add form state/validation plus an external service or deployed backend |
+| Change the email-draft contact flow | `artifacts/portfolio/src/components/ContactSection.tsx` |
+| Add direct contact-form delivery | add an external form service or deploy a backend endpoint |
 | Change GitHub Pages behavior | `.github/workflows/deploy.yml` and possibly `vite.config.ts` |
 
 When replacing the headshot or resume, the least disruptive approach is to keep the imported variable names and change only the file path. If the asset filename changes, update every component importing it. Avoid editing generated API files directly.
@@ -523,7 +524,7 @@ When replacing the headshot or resume, the least disruptive approach is to keep 
 
 These are statements about current behavior, not hypothetical future concerns:
 
-1. **The contact form does not send anything.** It prevents submission and has no success/error state.
+1. **The contact form depends on the visitor's email application.** It creates a pre-filled draft but cannot send in the background or confirm delivery; a visitor without a configured `mailto:` handler may need to use the fallback link or copy the displayed contact address.
 2. **The frontend does not use the API.** React Query and the generated client are prepared but idle.
 3. **The API is not deployed.** The GitHub Pages workflow can only publish static files.
 4. **The database is empty and unused.** There are no schema models or application queries.
