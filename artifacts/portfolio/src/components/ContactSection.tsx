@@ -4,6 +4,29 @@ import { Mail, Github, Linkedin, Send } from 'lucide-react';
 import { Button } from './ui/button';
 
 export function ContactSection() {
+  const [emailDraftUrl, setEmailDraftUrl] = React.useState<string | null>(null);
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const name = String(formData.get('name') ?? '').trim();
+    const email = String(formData.get('email') ?? '').trim();
+    const message = String(formData.get('message') ?? '').trim();
+    const subject = `Portfolio message from ${name}`;
+    const body = [
+      `Name: ${name}`,
+      `Reply email: ${email}`,
+      '',
+      'Message:',
+      message,
+    ].join('\n');
+    const mailtoUrl = `mailto:abdulsayed9@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    setEmailDraftUrl(mailtoUrl);
+    window.location.href = mailtoUrl;
+  };
+
   return (
     <section id="contact" className="py-24 bg-background">
       <div className="container mx-auto px-6 max-w-4xl text-center">
@@ -57,13 +80,17 @@ export function ContactSection() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="bg-card border border-border rounded-2xl p-8 md:p-10 max-w-2xl mx-auto text-left"
         >
-          <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label htmlFor="name" className="text-sm font-medium text-foreground">Name</label>
                 <input 
                   type="text" 
                   id="name" 
+                  name="name"
+                  autoComplete="name"
+                  required
+                  maxLength={100}
                   className="w-full bg-background border border-border rounded-md px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary/50 text-foreground"
                   placeholder="John Doe"
                   data-testid="input-name"
@@ -74,6 +101,10 @@ export function ContactSection() {
                 <input 
                   type="email" 
                   id="email" 
+                  name="email"
+                  autoComplete="email"
+                  required
+                  maxLength={254}
                   className="w-full bg-background border border-border rounded-md px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary/50 text-foreground"
                   placeholder="john@example.com"
                   data-testid="input-email"
@@ -84,7 +115,10 @@ export function ContactSection() {
               <label htmlFor="message" className="text-sm font-medium text-foreground">Message</label>
               <textarea 
                 id="message" 
+                name="message"
                 rows={5}
+                required
+                maxLength={3000}
                 className="w-full bg-background border border-border rounded-md px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary/50 text-foreground resize-none"
                 placeholder="Hello, I'd like to talk about..."
                 data-testid="input-message"
@@ -93,6 +127,15 @@ export function ContactSection() {
             <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white" size="lg" data-testid="button-submit-contact">
               Send Message <Send className="ml-2 w-4 h-4" />
             </Button>
+            {emailDraftUrl && (
+              <p className="text-sm text-muted-foreground text-center" role="status" aria-live="polite">
+                Your email app should open with a pre-filled message. If it did not,{' '}
+                <a href={emailDraftUrl} className="text-primary hover:underline">
+                  open the email draft
+                </a>
+                .
+              </p>
+            )}
           </form>
         </motion.div>
 
