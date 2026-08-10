@@ -26,9 +26,9 @@ Those supporting and legacy areas are not part of the deployed website. This dis
 | Motion | Framer Motion plus CSS animations |
 | Routing | Wouter; `/` plus a client-side catch-all page |
 | Data source | Hardcoded arrays and text inside React components |
-| Backend usage | None |
+| Backend usage | FormSubmit AJAX endpoint for contact delivery; repository API remains unused |
 | Database usage | None |
-| Contact form | Native validation plus a pre-filled `mailto:` draft; no backend delivery |
+| Contact form | AJAX submission through FormSubmit with inline success/error feedback |
 | Deployment | GitHub Actions to GitHub Pages on pushes to `master` |
 | Automated tests | None currently present |
 
@@ -201,13 +201,13 @@ File: `artifacts/portfolio/src/components/ContactSection.tsx`
 
 Three contact cards open email, LinkedIn, and GitHub. External web links open a new tab and include `rel="noopener noreferrer"`; email uses a `mailto:` link.
 
-The section also contains uncontrolled name, email, and message fields. Each field has a form `name`, is required, and has a maximum length; the name and email fields also provide browser autocomplete hints. The email input uses `type="email"`, so the browser blocks malformed addresses before the submit handler runs.
+The section also contains uncontrolled name, email, and message fields. Each field has a form `name`, is required, and has a maximum length; the name and email fields also provide browser autocomplete hints. The email input uses `type="email"`, so the browser blocks malformed addresses before the submit handler runs. A visually hidden `_honey` field acts as a spam honeypot.
 
-`handleSubmit` reads the fields through `FormData`, trims their values, and constructs a URL-encoded `mailto:` URL addressed to `abdulsayed9@gmail.com`. The generated draft includes a subject based on the visitor's name and a body containing the visitor's name, reply address, and message. Assigning that URL to `window.location.href` asks the operating system or browser to open the visitor's configured email application.
+`handleSubmit` reads the fields through `FormData`, trims their values, and posts JSON to FormSubmit's cross-origin AJAX endpoint for `abdulsayed9@gmail.com`. The payload includes the visitor's name, reply email, message, a custom subject, the table email template, the honeypot value, and the page URL. FormSubmit forwards successful submissions to the portfolio owner's mailbox; the visitor's email field supplies the reply address. `VITE_CONTACT_FORM_ENDPOINT` can override the endpoint for local or staging tests without changing source code.
 
-The component stores the generated draft URL in React state. After submission it renders an accessible `role="status"` message with an `aria-live="polite"` fallback link, allowing the visitor to retry opening the same pre-filled draft if the initial handoff is not visible.
+The component tracks idle, submitting, success, and error states. While a request is in progress, it disables the fields and button, changes the button label, shows a spinner, and exposes `aria-busy` on the form. Requests are aborted after 15 seconds. Successful requests reset the fields and show an inline confirmation; errors show an accessible alert and retain a direct `mailto:` fallback link.
 
-No message is posted to the Express scaffold or a third-party form service, and the site receives no delivery confirmation. The visitor must review and send the draft from their own email application. Direct background delivery would require a deployed backend or an external form provider.
+The Express scaffold remains unused and undeployed. FormSubmit is the form backend, so contact details leave the site and are processed by that service. A new FormSubmit destination must be activated once: the first production submission sends an activation email to `abdulsayed9@gmail.com`, and forwarding begins after the owner confirms it.
 
 ### 4.9 Footer
 
@@ -297,13 +297,13 @@ The headshot and PDF are imported and emitted with build-managed URLs. Files in 
 
 `opengraph.jpg` is present but is not referenced by an Open Graph meta tag. The favicon is referenced as the public asset `/favicon.svg`; if the deployment strategy changes, built asset URLs should be rechecked with the configured Vite base.
 
-The production site also depends on Google Fonts at page load. Social links, the contact form's generated `mailto:` URL, other email links, and the live portfolio project link are external navigation only; the application does not fetch their data.
+The production site also depends on Google Fonts at page load. The contact form posts visitor-provided contact data to FormSubmit. Social links, standalone email links, and the live portfolio project link are external navigation only; the application does not fetch their data.
 
 ### 5.7 Test hooks and accessibility
 
 Important controls include `data-testid` attributes, which make future browser tests easier to target. No test suite currently consumes them.
 
-The code uses semantic sections, headings, labels, buttons, anchors, alternate image text, and safe external-link attributes. The contact form also uses native required/email validation and announces its email-draft fallback through a polite live status region. Some icon-only links and mobile controls do not have explicit accessible names, and animation does not yet respect reduced-motion preferences. Those are current gaps, not hidden framework behavior.
+The code uses semantic sections, headings, labels, buttons, anchors, alternate image text, and safe external-link attributes. The contact form also uses native required/email validation, `aria-busy`, a polite live status region, and an alert for submission failures. Some icon-only links and mobile controls do not have explicit accessible names, and animation does not yet respect reduced-motion preferences. Those are current gaps, not hidden framework behavior.
 
 ## 6. Production frontend file responsibilities
 
@@ -477,7 +477,7 @@ pnpm --filter @workspace/portfolio run serve
 
 The production output is `artifacts/portfolio/dist/public`.
 
-`PORT` changes the development/preview port. `BASE_PATH` changes Vite's public base and Wouter's client base. The current deployment uses `/` because the repository is hosted as a user/organization GitHub Pages site.
+`PORT` changes the development/preview port. `BASE_PATH` changes Vite's public base and Wouter's client base. `VITE_CONTACT_FORM_ENDPOINT` optionally replaces the production FormSubmit URL, primarily for mocked local or staging tests. The current deployment uses `/` because the repository is hosted as a user/organization GitHub Pages site.
 
 The root `pnpm run build` is broader: it typechecks workspace libraries and artifacts, then builds every artifact that exposes a build script, including the API and mockup sandbox.
 
@@ -514,8 +514,8 @@ The API server and database are not deployed by this workflow. GitHub Pages cann
 | Change responsive layout | Tailwind classes in the affected component |
 | Add a real routed page | add a page component and a Wouter `<Route>` in `App.tsx` |
 | Add an API endpoint | OpenAPI spec, generated code, API route, and deployment infrastructure |
-| Change the email-draft contact flow | `artifacts/portfolio/src/components/ContactSection.tsx` |
-| Add direct contact-form delivery | add an external form service or deploy a backend endpoint |
+| Change contact-form delivery or feedback | `artifacts/portfolio/src/components/ContactSection.tsx` |
+| Replace FormSubmit | change `FORM_ENDPOINT` and adapt the request/response handling, or deploy a backend endpoint |
 | Change GitHub Pages behavior | `.github/workflows/deploy.yml` and possibly `vite.config.ts` |
 
 When replacing the headshot or resume, the least disruptive approach is to keep the imported variable names and change only the file path. If the asset filename changes, update every component importing it. Avoid editing generated API files directly.
@@ -524,7 +524,7 @@ When replacing the headshot or resume, the least disruptive approach is to keep 
 
 These are statements about current behavior, not hypothetical future concerns:
 
-1. **The contact form depends on the visitor's email application.** It creates a pre-filled draft but cannot send in the background or confirm delivery; a visitor without a configured `mailto:` handler may need to use the fallback link or copy the displayed contact address.
+1. **Contact delivery depends on FormSubmit.** The form requires network access, a one-time destination activation, and continued third-party service availability; delivery failures fall back to a direct email link.
 2. **The frontend does not use the API.** React Query and the generated client are prepared but idle.
 3. **The API is not deployed.** The GitHub Pages workflow can only publish static files.
 4. **The database is empty and unused.** There are no schema models or application queries.
