@@ -44,7 +44,7 @@ export function AboutSection() {
             className="lg:w-2/3 space-y-6 text-muted-foreground"
           >
             <p className="text-lg leading-relaxed text-foreground">
-              Computer Science graduate from Georgia Institute of Technology with hands-on experience across full-stack development, AI training, Salesforce development, and automation engineering. Passionate about crafting performant, accessible front-end experiences with clean architecture and modern tooling.
+              Computer Science graduate from Georgia Institute of Technology with hands-on experience across full-stack software development, AI evaluation and instruction, Salesforce platform development, and controls engineering. I enjoy building practical, maintainable systems end to end, from accessible interfaces and backend services to APIs, data workflows, automation, and AI-assisted tools.
             </p>
 
             <div className="bg-card border border-border rounded-xl p-6 shadow-sm">
@@ -74,7 +74,7 @@ export function AboutSection() {
             </div>
 
             <p className="text-lg font-medium text-primary mt-6 italic">
-              "Seeking front-end engineering roles where I can apply my expertise in Vue.js, React, TypeScript, and component-driven architecture to build products people love using."
+              "Seeking full-stack software engineering roles where I can contribute across front-end, backend, APIs, data, and applied AI while building products that solve real business problems."
             </p>
 
           </motion.div>

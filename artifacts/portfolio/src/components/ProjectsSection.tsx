@@ -8,15 +8,16 @@ const projectsData = [
     id: 1,
     title: "Portfolio Website",
     date: "November 2025 – Present",
-    description: "Responsive multi-page SPA built with Vue.js 3, Vue Router, and a Vite build pipeline.",
-    stack: ["Vue.js 3", "Vue Router", "Vite", "CSS Custom Properties", "GitHub Actions"],
+    description: "Responsive single-page portfolio built with React 19, TypeScript, Vite, Tailwind CSS, and Framer Motion.",
+    stack: ["React 19", "TypeScript", "Vite", "Tailwind CSS", "Framer Motion", "GitHub Actions"],
     accomplishments: [
-      "Reusable component architecture with navigation dropdown supporting hover and touch interactions",
-      "Embedded PDF resume viewer with direct download link using dynamic asset imports",
-      "Design system using CSS custom properties for shared color palette, spacing, and typography",
-      "Automated CI/CD deployment to GitHub Pages via GitHub Actions on every push to main"
+      "Reusable section-based component architecture with responsive navigation and active-section tracking",
+      "Embedded Cloudinary-hosted PDF resume with direct download links in the hero and resume sections",
+      "Accessible AJAX contact form powered by FormSubmit with validation and inline delivery feedback",
+      "Light and dark themes built with Tailwind CSS and shared semantic design tokens",
+      "Automated CI/CD deployment to GitHub Pages via GitHub Actions on every push to master"
     ],
-    github: "https://github.com/Abdul-RahmanSayed",
+    github: "https://github.com/Abdul-RahmanSayed/Abdul-RahmanSayed.github.io",
     live: "https://abdul-rahmansayed.github.io/",
     gradient: "from-purple-500/20 to-indigo-500/20",
     borderGlow: "group-hover:border-purple-500/50 group-hover:shadow-[0_0_30px_rgba(168,85,247,0.15)]"

@@ -1,5 +1,7 @@
 # Portfolio Codebase Guide
 
+Last verified against the production source: August 12, 2026.
+
 ## 1. Executive summary
 
 This repository is a pnpm workspace whose production deliverable is a static React portfolio site. The live application is in `artifacts/portfolio`, and `.github/workflows/deploy.yml` builds that package and publishes its generated files to GitHub Pages.
@@ -37,11 +39,12 @@ Those supporting and legacy areas are not part of the deployed website. This dis
 ```text
 .
 ├── .github/workflows/deploy.yml       # Production GitHub Pages pipeline
+├── .vscode/settings.json              # Uses the workspace-installed TypeScript SDK
 ├── artifacts/
 │   ├── portfolio/                     # Production React SPA
 │   ├── api-server/                    # Undeployed Express API scaffold
 │   └── mockup-sandbox/                # Local component-preview tool
-├── attached_assets/                   # Production headshot/resume and source assets
+├── attached_assets/                   # Production images plus historical resume/source assets
 ├── lib/
 │   ├── api-spec/                      # OpenAPI source and Orval configuration
 │   ├── api-client-react/              # Generated React Query client + custom fetch
@@ -128,11 +131,13 @@ The hero fills at least one viewport and presents:
 - GitHub, LinkedIn, and email links; and
 - a circular headshot with a purple-to-teal border and glow.
 
+The rotating role list currently contains Full-Stack Developer, Software Engineer, Applied AI Developer, and Georgia Tech Graduate. The accompanying tagline broadens the positioning beyond front-end work to web applications, backend systems, APIs, and AI-powered tools.
+
 The typewriter effect uses three state values: the current role index, the visible substring, and whether text is being deleted. It adds one character every 100ms, holds the completed role for roughly two seconds, deletes one character every 50ms, and advances with modulo arithmetic so the four roles loop forever.
 
 The background effect is CSS-only: two large, blurred color circles use the pulse animation. The entrance of the text and photo uses Framer Motion.
 
-The headshot and resume are imported through the `@assets` alias. Vite resolves that alias to the repository-level `attached_assets` directory and turns each imported file into a built asset URL. The resume button uses the browser's `download` attribute.
+The headshot is imported through the `@assets` alias. Vite resolves that alias to the repository-level `attached_assets` directory and turns the imported image into a built asset URL. The resume link instead uses the same versioned Cloudinary PDF URL as the Resume section. Its anchor includes a `download` attribute, although cross-origin browser behavior determines whether the PDF is downloaded directly or opened first.
 
 ### 4.3 About section
 
@@ -144,7 +149,9 @@ The About section is static content arranged as one column on smaller screens an
 - a professional summary;
 - Georgia Tech degree, thread, and honors details;
 - the Azure Fundamentals certification; and
-- a front-end-focused career statement.
+- a full-stack software engineering career statement that also calls out APIs, data, and applied AI.
+
+The professional summary positions Abdul-Rahman's experience across full-stack software development, AI evaluation and instruction, Salesforce platform development, and controls engineering. It emphasizes practical, maintainable systems built across interfaces, backend services, APIs, data workflows, automation, and AI-assisted tools.
 
 The image begins in grayscale and transitions to color on hover. The image and text columns use separate scroll-triggered entrance animations. There is no data request or component state; editing the JSX changes the displayed content directly.
 
@@ -173,15 +180,19 @@ Each object supplies the title, date, summary, technology badges, accomplishment
 
 Every card has a gradient header, stack badges, accomplishment bullets, and action buttons. The shared `Button` component can render its child anchor through Radix `Slot`, which preserves button styling while keeping correct link behavior.
 
-When `live` is absent, the Live Demo control renders as a disabled button with a `No Demo` label. Current GitHub buttons all point to the general GitHub profile rather than project-specific repositories.
+The Portfolio Website record describes the actual React 19, TypeScript, Vite, Tailwind CSS, and Framer Motion implementation. It also documents the Cloudinary resume, FormSubmit contact form, theme system, and deployment on pushes to `master`. Its GitHub button links directly to this repository. The remaining project cards still link to the general GitHub profile.
+
+When `live` is absent, the Live Demo control renders as a disabled button with a `No Demo` label.
 
 ### 4.6 Experience timeline
 
 File: `artifacts/portfolio/src/components/ExperienceSection.tsx`
 
-`experienceData` contains five roles in reverse chronological order. Each entry provides the employer, role, dates, location, impact bullets, and technology tags.
+`experienceData` contains six roles: iD Tech, SkillStorm, ProAutomated, Invisible Technologies, MessageGears, and Georgia Institute of Technology. Each entry provides the employer, role, dates, location, resume-derived impact bullets, technology tags, and an optional logo asset.
 
-The desktop layout is a vertical stack of cards. On mobile, each entry also receives an absolute-positioned line and dot to create a timeline. Cards animate once as they enter the viewport, with later entries receiving slightly longer delays.
+Every current entry has a dedicated company logo. When a future entry omits `logo`, the renderer automatically uses `attached_assets/experience-default.svg`; no current card uses that fallback. Logos are imported through `@assets`, rendered inside a fixed white logo panel with `object-contain`, and lazy-loaded. Dedicated logos receive company-specific alternate text; the generic fallback is decorative because the adjacent card already names the employer.
+
+The desktop layout is a vertical stack of cards with the company image beside the content. The layout stacks the logo above the content on narrow screens, where each entry also receives an absolute-positioned line and dot to create a timeline. Cards animate once as they enter the viewport, with later entries receiving slightly longer delays.
 
 All professional content is local JSX data. "Present" and other dates do not update automatically.
 
@@ -189,11 +200,11 @@ All professional content is local JSX data. "Present" and other dates do not upd
 
 File: `artifacts/portfolio/src/components/ResumeSection.tsx`
 
-The section imports the same resume used by the hero and offers a prominent download button. Beneath it, an `<object type="application/pdf">` displays the PDF in a fixed 600px-tall panel.
+The section uses the same versioned Cloudinary resume URL as the hero and offers a prominent download button. Beneath it, an `<object type="application/pdf">` displays the PDF in a fixed 600px-tall panel.
 
 If the browser cannot embed PDFs, the nested fallback content explains the limitation and offers another download link. The decorative title bar above the viewer is part of the page, not part of the PDF viewer.
 
-The actual production file is `attached_assets/Sayed_AbdulRahman_Resume_1778170233910.pdf`. Historical PDFs under `src/assets/pdfs` belong to the legacy application and are not bundled by the React site.
+The production resume is `https://res.cloudinary.com/dyd2wkozw/image/upload/v1785798732/Sayed_AbdulRahman_Resume_072426a.pdf`. That URL is currently duplicated as a constant in `HeroSection.tsx` and `ResumeSection.tsx`, so both must be updated when the resume changes. PDFs under `attached_assets` and `src/assets/pdfs` are historical files and are not imported by the production React site.
 
 ### 4.8 Contact section
 
@@ -207,7 +218,7 @@ The section also contains uncontrolled name, email, and message fields. Each fie
 
 The component tracks idle, submitting, success, and error states. While a request is in progress, it disables the fields and button, changes the button label, shows a spinner, and exposes `aria-busy` on the form. Requests are aborted after 15 seconds. Successful requests reset the fields and show an inline confirmation; errors show an accessible alert and retain a direct `mailto:` fallback link.
 
-The Express scaffold remains unused and undeployed. FormSubmit is the form backend, so contact details leave the site and are processed by that service. A new FormSubmit destination must be activated once: the first production submission sends an activation email to `abdulsayed9@gmail.com`, and forwarding begins after the owner confirms it.
+The Express scaffold remains unused and undeployed. FormSubmit is the form backend, so contact details leave the site and are processed by that service. The current destination was activated and successful delivery was confirmed on August 12, 2026. Replacing the destination email would require activating the new address before forwarding begins.
 
 ### 4.9 Footer
 
@@ -289,11 +300,17 @@ This system is wired into `App.tsx` through `<Toaster />`, but it has no current
 Production-local assets:
 
 - `attached_assets/Headshot3_1778170238565.jpg`
-- `attached_assets/Sayed_AbdulRahman_Resume_1778170233910.pdf`
+- `attached_assets/idTechLogo.png`
+- `attached_assets/skillstormLogo.jpg`
+- `attached_assets/proautomatedLogo.png`
+- `attached_assets/invisibleTechLogo.png`
+- `attached_assets/messageGearsLogo.jpg`
+- `attached_assets/Georgia-Tech-New-logo-f.png`
+- `attached_assets/experience-default.svg`
 - `artifacts/portfolio/public/favicon.svg`
 - `artifacts/portfolio/public/opengraph.jpg`
 
-The headshot and PDF are imported and emitted with build-managed URLs. Files in `public` are copied to the output root without import processing.
+The headshot and experience images are imported and emitted with build-managed URLs. The generic experience image is available but is not assigned to a current role. Files in `public` are copied to the output root without import processing. The displayed resume is hosted externally by Cloudinary rather than emitted by the Vite build.
 
 `opengraph.jpg` is present but is not referenced by an Open Graph meta tag. The favicon is referenced as the public asset `/favicon.svg`; if the deployment strategy changes, built asset URLs should be rechecked with the configured Vite base.
 
@@ -444,9 +461,11 @@ This Vue application is not the current deploy target:
 
 The workspace requires pnpm. The root `preinstall` script rejects other package managers and removes npm/yarn lockfiles during installation. `pnpm-workspace.yaml` defines all packages, centralizes shared versions in a catalog, disables automatic peer installation, and enforces a 24-hour minimum npm package age as a supply-chain precaution.
 
-The repository currently also tracks `package-lock.json`, but the enforced pnpm workflow treats it as disposable. `pnpm-lock.yaml` is the authoritative lockfile.
+The repository does not track `package-lock.json`; `pnpm-lock.yaml` is the authoritative lockfile.
 
 CI uses Node 20 and pnpm 10. Those are the safest local versions to mirror.
+
+The tracked `.vscode/settings.json` points VS Code's JavaScript/TypeScript service at `node_modules/typescript/lib`, keeping editor diagnostics aligned with the workspace TypeScript version after dependencies are installed.
 
 ### 9.2 Production frontend commands
 
@@ -508,7 +527,7 @@ The API server and database are not deployed by this workflow. GitHub Pages cann
 | Add or update a project | `components/ProjectsSection.tsx` → `projectsData` |
 | Add or update a job | `components/ExperienceSection.tsx` → `experienceData` |
 | Replace the production headshot | update `@assets` imports in Hero and About |
-| Replace the production resume | update `@assets` imports in Hero and Resume |
+| Replace the production resume | update the Cloudinary URL constants in Hero and Resume |
 | Change contact/social URLs | Hero, Contact, and Footer components |
 | Change theme colors or fonts | `artifacts/portfolio/src/index.css` |
 | Change responsive layout | Tailwind classes in the affected component |
@@ -518,7 +537,7 @@ The API server and database are not deployed by this workflow. GitHub Pages cann
 | Replace FormSubmit | change `FORM_ENDPOINT` and adapt the request/response handling, or deploy a backend endpoint |
 | Change GitHub Pages behavior | `.github/workflows/deploy.yml` and possibly `vite.config.ts` |
 
-When replacing the headshot or resume, the least disruptive approach is to keep the imported variable names and change only the file path. If the asset filename changes, update every component importing it. Avoid editing generated API files directly.
+When replacing the headshot, the least disruptive approach is to keep the imported variable name and change only the `@assets` file path in Hero and About. When replacing the resume, update the duplicated Cloudinary URL constants in Hero and Resume. Avoid editing generated API files directly.
 
 ## 11. Current limitations and maintenance risks
 
@@ -532,12 +551,10 @@ These are statements about current behavior, not hypothetical future concerns:
 6. **Only one real frontend route exists.** Portfolio navigation is hash-based section scrolling.
 7. **There are no automated tests.** The `data-testid` attributes are unused preparation, not test coverage.
 8. **The repository contains two site generations.** The React README and Vue CHANGELOG describe different architectures, which can mislead maintainers.
-9. **The portfolio project card describes the previous Vue implementation.** The site serving that card is now React/TypeScript.
-10. **SEO metadata is incomplete.** The document has a title and favicon, but no meta description or Open Graph tags; the existing `opengraph.jpg` is unused.
-11. **Accessibility work remains.** Several icon-only links/controls need explicit accessible names, and motion has no reduced-motion path.
-12. **Some requested performance work is absent.** Images do not use lazy loading, sections are eagerly imported, and Google Fonts are referenced from both HTML and CSS.
-13. **Many UI components and dependencies are currently unused.** Tree shaking protects the browser bundle, but installation and maintenance still include the larger dependency surface.
-14. **The tracked npm lockfile conflicts with the enforced pnpm policy.** Running the intended install path removes npm/yarn lockfiles.
+9. **SEO metadata is incomplete.** The document has a title and favicon, but no meta description or Open Graph tags; the existing `opengraph.jpg` is unused.
+10. **Accessibility work remains.** Several icon-only links/controls need explicit accessible names, and motion has no reduced-motion path.
+11. **Some requested performance work is absent.** Experience logos use lazy loading, but the headshot does not, sections are eagerly imported, and Google Fonts are referenced from both HTML and CSS.
+12. **Many UI components and dependencies are currently unused.** Tree shaking protects the browser bundle, but installation and maintenance still include the larger dependency surface.
 
 ## 12. Recommended source-of-truth rules
 
@@ -545,7 +562,7 @@ To avoid future confusion:
 
 - Treat `artifacts/portfolio` as the website source of truth.
 - Treat `.github/workflows/deploy.yml` as the deployment source of truth.
-- Treat `attached_assets/Sayed_AbdulRahman_Resume_1778170233910.pdf` as the currently displayed resume.
+- Treat the versioned Cloudinary URL shared by `HeroSection.tsx` and `ResumeSection.tsx` as the currently displayed resume.
 - Treat `lib/api-spec/openapi.yaml` as the API contract source of truth.
 - Treat generated API files as disposable build products.
 - Treat root `src/`, `CHANGELOG.md`, and root Vite/deploy helpers as legacy until they are deliberately removed or restored.

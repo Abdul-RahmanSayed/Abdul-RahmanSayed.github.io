@@ -5,9 +5,9 @@ import headshotPath from "@assets/Headshot3_1778170238565.jpg";
 import { Button } from './ui/button';
 
 const resumePdfPath = "https://res.cloudinary.com/dyd2wkozw/image/upload/v1785798732/Sayed_AbdulRahman_Resume_072426a.pdf";
+const roles = ["Full-Stack Developer", "Software Engineer", "Applied AI Developer", "Georgia Tech Graduate"];
 
 export function HeroSection() {
-  const roles = ["Front-End Developer", "Software Engineer", "Vue.js Specialist", "Georgia Tech Graduate"];
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -69,7 +69,7 @@ export function HeroSection() {
             </div>
             
             <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-lg leading-relaxed">
-              Building polished, performant web experiences.
+              Building practical, reliable software across web applications, backend systems, APIs, and AI-powered tools.
             </p>
             
             <div className="flex flex-wrap gap-4 mb-12">
