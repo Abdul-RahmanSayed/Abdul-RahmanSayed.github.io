@@ -2,8 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Download } from 'lucide-react';
 import { Button } from './ui/button';
-
-const resumePdfPath = "https://res.cloudinary.com/dyd2wkozw/image/upload/v1785798732/Sayed_AbdulRahman_Resume_072426a.pdf";
+import { resumeFilename, resumePdfUrl } from '@/lib/resume';
 
 export function ResumeSection() {
   return (
@@ -23,7 +22,7 @@ export function ResumeSection() {
           </div>
           
           <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full font-medium shadow-[0_0_15px_rgba(108,99,255,0.3)]" data-testid="btn-download-resume-section">
-            <a href={resumePdfPath} download="Sayed_AbdulRahman_Resume.pdf">
+            <a href={resumePdfUrl} download={resumeFilename} target="_blank" rel="noopener noreferrer">
               <Download className="mr-2 w-4 h-4" /> Download PDF
             </a>
           </Button>
@@ -37,8 +36,8 @@ export function ResumeSection() {
           className="w-full bg-card border border-border rounded-xl overflow-hidden shadow-sm h-[600px] flex flex-col"
         >
           <div className="bg-accent/50 border-b border-border py-3 px-4 flex items-center justify-between text-sm text-muted-foreground font-mono">
-            <span>Sayed_AbdulRahman_Resume.pdf</span>
-            <div className="flex gap-2">
+            <span className="min-w-0 break-all">{resumeFilename}</span>
+            <div className="flex gap-2 shrink-0 ml-3">
               <div className="w-3 h-3 rounded-full bg-red-500/20"></div>
               <div className="w-3 h-3 rounded-full bg-yellow-500/20"></div>
               <div className="w-3 h-3 rounded-full bg-green-500/20"></div>
@@ -46,14 +45,14 @@ export function ResumeSection() {
           </div>
           <div className="flex-1 w-full bg-[#323639] relative">
             <object 
-              data={resumePdfPath} 
+              data={resumePdfUrl}
               type="application/pdf" 
               className="absolute inset-0 w-full h-full"
             >
               <div className="flex flex-col items-center justify-center h-full p-6 text-center">
                 <p className="text-white/80 mb-4">Your browser doesn't support embedded PDFs.</p>
                 <Button asChild variant="default">
-                  <a href={resumePdfPath} download="Sayed_AbdulRahman_Resume.pdf">Download Resume instead</a>
+                  <a href={resumePdfUrl} download={resumeFilename} target="_blank" rel="noopener noreferrer">Download Resume instead</a>
                 </Button>
               </div>
             </object>

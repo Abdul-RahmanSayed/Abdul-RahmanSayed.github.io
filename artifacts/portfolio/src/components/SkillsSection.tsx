@@ -3,36 +3,36 @@ import { motion } from 'framer-motion';
 
 const skillsData = [
   {
-    category: "Front-End Development",
-    skills: ["JavaScript", "TypeScript", "HTML", "CSS", "React", "Angular", "Vue.js", "p5.js", "D3.js"]
+    category: "Front-End & Mobile",
+    skills: ["JavaScript", "TypeScript", "Dart", "HTML", "CSS", "React", "Angular", "Flutter", "Vue.js", "p5.js"]
   },
   {
-    category: "Back-End & Application",
-    skills: ["Python", "Java", "Apex", "Node.js", "C#", "JavaFX", "REST APIs", "Web Service Protocols", "JSON"]
+    category: "Back-End & APIs",
+    skills: ["Python", "Java", "Node.js", "FastAPI", "SQLAlchemy", "Apex", "C#", "REST APIs", "JSON", "XML"]
   },
   {
     category: "AI & Machine Learning",
-    skills: ["PyTorch", "TensorFlow", "scikit-learn", "Deep Learning", "Supervised Learning", "Regression", "Classification", "Computer Vision", "Knowledge-Based AI", "Game AI"]
+    skills: ["OpenAI API", "Ollama", "Prompt Engineering", "PyTorch", "TensorFlow", "scikit-learn", "Computer Vision", "GANs"]
+  },
+  {
+    category: "Data & Visualization",
+    skills: ["pandas", "NumPy", "Matplotlib", "D3.js", "Data Pipelines", "Statistical Analysis"]
   },
   {
     category: "Databases",
-    skills: ["SQL (MySQL)", "MongoDB", "NoSQL", "SOQL", "SOSL"]
+    skills: ["SQL", "Azure SQL", "MySQL", "MongoDB", "NoSQL", "SOQL", "SOSL", "Schema Migrations"]
   },
   {
     category: "Testing & QA",
-    skills: ["Mockito", "Integration Testing", "End-to-End Testing", "Cypress", "Selenium", "TestFX", "Jasmine"]
+    skills: ["Unit Testing", "Integration Testing", "End-to-End Testing", "Cypress", "Selenium", "Mockito", "TestFX", "Root-Cause Analysis"]
   },
   {
     category: "Developer Tooling",
-    skills: ["Git", "GitHub", "Bitbucket", "Docker", "Gradle", "Apache Tomcat", "Jira", "Confluence", "VS Code", "IntelliJ", "Vim", "PyCharm", "Google Colab"]
+    skills: ["Git", "GitHub Actions", "Bitbucket", "Docker", "Gradle", "Apache Tomcat", "Jira", "Confluence", "VS Code", "IntelliJ", "Vim", "PyCharm", "Google Colab"]
   },
   {
-    category: "Platforms & APIs",
-    skills: ["Microsoft Azure (AZ-900)", "Salesforce", "OpenAI API", "Ollama API", "Unity", "Godot", "OpenGL", "GLSL"]
-  },
-  {
-    category: "Core Concepts",
-    skills: ["Object-Oriented Design", "Agile", "Scrum", "Data Structures", "Algorithms", "Dynamic Programming", "CI/CD"]
+    category: "Cloud & Engineering",
+    skills: ["Microsoft Azure", "Azure App Service", "Salesforce", "Unity", "Godot", "GLSL", "Object-Oriented Design", "Data Structures", "Algorithms", "Agile/Scrum", "CI/CD"]
   }
 ];
 

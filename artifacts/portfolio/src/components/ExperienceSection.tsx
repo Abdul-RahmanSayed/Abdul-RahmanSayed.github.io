@@ -21,17 +21,30 @@ type ExperienceEntry = {
 
 const experienceData: ExperienceEntry[] = [
   {
+    id: 7,
+    company: "Confidential Pre-Launch Technology Venture",
+    role: "Full-Stack Engineer (Part-Time)",
+    date: "January 2026 - Present",
+    location: "Remote",
+    bullets: [
+      "Led production-readiness and integration of a team-built cross-platform Flutter/Dart app with Python, FastAPI, SQLAlchemy, and Azure SQL",
+      "Designed non-destructive schema migrations that preserved data and enforced integrity constraints; built backward-compatible REST adapters to resolve ID, authentication, timestamp, notification, and state-synchronization contracts",
+      "Improved Azure reliability through database compatibility fixes, transient retries, request tracing, standardized errors, CORS, secure API logging, and GitHub Actions deployments",
+      "Validated core journeys at an integration baseline of 57 passing frontend/backend tests and 88.8% backend coverage, plus static analysis; documented architecture, onboarding, migrations, deployment, testing, and troubleshooting"
+    ],
+    tags: ["Flutter", "Dart", "Python", "FastAPI", "SQLAlchemy", "Azure SQL", "REST APIs", "GitHub Actions", "Integration Testing"]
+  },
+  {
     id: 1,
     company: "iD Tech",
-    role: "Part-Time Instructor",
-    date: "May 2020 - August 2021; April 2026 - Present",
+    role: "Online Instructor",
+    date: "April 2026 - August 2026; May 2020 - August 2021",
     location: "Remote / Alpharetta, GA",
     logo: idTechLogo,
     bullets: [
-      "Teach private and group project-based lessons in Python, Java, JavaScript/p5.js, machine learning, and AI using Google Colab, PyCharm, VS Code, scikit-learn, the OpenAI API, and Ollama/Llama 3",
-      "Explain AI, machine learning, and deep learning through supervised learning, regression and classification, train/test splits, overfitting and underfitting, and image-classification projects",
-      "Guide students through terminal and Tkinter chatbots, AI assistants, local LLM setup, file and JSON workflows, Java applications, and Unity/C#, Godot, Minecraft, and p5.js game projects",
-      "Troubleshoot language, JDK, IDE, package, library, API, and cross-platform setup issues while creating lesson plans, technical explanations, progress summaries, and next-step guidance"
+      "Taught private and group lessons in Python, Java, JavaScript/p5.js, and ML/AI using scikit-learn, the OpenAI API, Ollama/Llama 3, Google Colab, Tkinter, Unity/C#, and Godot",
+      "Explained AI assistants and local LLM workflows in plain language, adapted analogies through probing questions, and checked understanding through independent coding and learner-friendly guides",
+      "Troubleshot Python packages, Java/JDK, APIs, and cross-platform setups in PyCharm and VS Code for students and instructors; wrote lesson plans, progress summaries, and follow-up resources"
     ],
     tags: ["Python", "Java", "JavaScript", "p5.js", "C#", "AI/ML", "scikit-learn", "OpenAI API", "Ollama", "Unity", "Godot"]
   },
@@ -39,13 +52,11 @@ const experienceData: ExperienceEntry[] = [
     id: 2,
     company: "SkillStorm",
     role: "Salesforce Developer",
-    date: "January 2026 - April 2026",
+    date: "January 2026",
     location: "Atlanta, GA",
     logo: skillStormLogo,
     bullets: [
-      "Supported Salesforce platform design using custom objects, relationships, Flows, and Apex to improve workflow automation and reporting",
-      "Developed normalized schemas, standardized fields, and transformation logic to strengthen data integrity and downstream SQL readiness",
-      "Position concluded after project funding was withdrawn; separation was unrelated to performance"
+      "Supported Salesforce data modeling and workflow automation using custom objects, relationships, Flows, and Apex, standardizing fields and transformation logic for data integrity and reporting"
     ],
     tags: ["Salesforce", "Apex", "Flows", "SQL", "Data Modeling"]
   },
@@ -54,43 +65,41 @@ const experienceData: ExperienceEntry[] = [
     company: "ProAutomated",
     role: "Field Service Engineer",
     date: "February 2025 - December 2025",
-    location: "Atlanta, GA",
+    location: "Atlanta, GA / Thermo Systems at QTS",
     logo: proAutomatedLogo,
     bullets: [
-      "Implemented and commissioned control systems in QTS data centers, including PLC programming, EPMS/BMS functional testing, and network troubleshooting for Microsoft and Meta systems",
-      "Analyzed and resolved control-system software defects while optimizing network configurations and automation logic for peak performance",
-      "Trained new field service engineers and coordinated with managers and on-site energy marshals to meet site-wide deadlines"
+      "Programmed and commissioned Allen-Bradley PLC controls, performing EPMS/BMS functional and sequence testing, I/O checkout, Ignition SCADA validation, networking, and device-communication troubleshooting in data centers",
+      "Diagnosed software, controls, and network issues within safety constraints; reconciled devices, vendor schematics, SCADA data, and checklists to unblock commissioning",
+      "Compiled discrepancy logs, photos, and vendor evidence, and explained mismatches to QTS and Thermo Systems stakeholders to support approved vendor-specific checklists and ongoing reporting",
+      "Balanced commissioning and sequence-test demands during staffing gaps; onboarded three initial new hires and coached co-ops through demos, reference guides, and independent checks, helping trainees approach experienced peers' efficiency within two weeks"
     ],
-    tags: ["PLC", "EPMS/BMS", "Network Troubleshooting", "Controls", "Technical Leadership"]
+    tags: ["Allen-Bradley PLC", "EPMS/BMS", "Ignition SCADA", "Network Troubleshooting", "Commissioning", "Onboarding"]
   },
   {
     id: 4,
     company: "Invisible Technologies",
-    role: "Advanced AI Trainer Software Developer - Contractor",
+    role: "Advanced AI Trainer / Software Developer Contractor",
     date: "February 2024 - February 2025",
     location: "Remote",
     logo: invisibleTechnologiesLogo,
     bullets: [
-      "Analyzed client LLM systems and API workflows to identify hallucinations, then wrote and coded corrected technical solutions in place of faulty responses",
-      "Conducted rigorous evaluations of model accuracy, resilience, and safety across Java, Spring, Spring Boot, TypeScript, JavaScript, HTML, XML, and Python prompts",
-      "Documented failure modes and recommended corrections that improved the reliability and technical quality of model responses"
+      "Evaluated LLM-generated coding and technical responses across Java, TypeScript, JavaScript, and Python for factual errors, faulty reasoning, missed edge cases, safety, and requirement adherence",
+      "Wrote corrected solutions and code, verified model claims, and documented failure modes and recommendations to improve technical response quality"
     ],
-    tags: ["LLMs", "Prompt Engineering", "Python", "Java", "Spring Boot", "TypeScript", "JavaScript", "XML"]
+    tags: ["LLM Evaluation", "Prompt Engineering", "Python", "Java", "TypeScript", "JavaScript", "Technical Review"]
   },
   {
     id: 5,
     company: "MessageGears",
     role: "Software Development Lead Intern / Software Development Intern",
-    date: "May 2022 - August 2022; May 2023 - August 2023",
+    date: "May 2023 - August 2023; May 2022 - August 2022",
     location: "Atlanta, GA",
     logo: messageGearsLogo,
     bullets: [
-      "Contributed to a production Java and TypeScript enterprise messaging platform with an Angular SPA, Java backend services, REST APIs, JSON/XML data exchange, and relational database interactions",
-      "Completed 27+ Jira user stories and resolved 15+ defects involving UI behavior, scheduled jobs, personalization attributes, pagination controls, and component styling",
-      "Implemented and refactored Java backend components and modified relational schemas and SQL scripts to support new features and fixes",
-      "Developed and debugged Angular components using Chrome Developer Tools, including date pickers, tooltips, pagination controls, and button-state logic",
-      "Built Selenium and Cypress UI, integration, and REST API tests while working in a Docker-based CI/CD environment with Gradle and Apache Tomcat",
-      "Mentored interns through onboarding, story breakdown, debugging, and sprint execution, contributing to a 96% improvement in internship-program completion metrics"
+      "Delivered 27+ Jira stories and resolved 15+ bugs across a TypeScript/Angular application, Java REST services, SQL workflows, scheduled jobs, personalization, and pagination",
+      "Built Java/JSON/XML REST services and SQL schema scripts; used Chrome DevTools and network inspection to trace failures across the client, API, database, and scheduled processes",
+      "Developed Selenium and Cypress UI, integration, and REST API tests and worked in containerized development and CI/CD workflows using Docker, Gradle, and Apache Tomcat",
+      "Mentored interns through onboarding, story breakdown, debugging, and sprint execution, contributing to a 96% improvement over the prior year in the internship team's story completion rate measured using Agile story points"
     ],
     tags: ["Angular", "TypeScript", "Java", "SQL", "Selenium", "Cypress", "Docker", "Gradle"]
   },
@@ -102,8 +111,8 @@ const experienceData: ExperienceEntry[] = [
     location: "Atlanta, GA",
     logo: georgiaTechLogo,
     bullets: [
-      "Instructed more than 200 students per semester in object-oriented programming and Agile methodologies and developed custom lecture content covering Git and GitHub",
-      "Collaborated on project descriptions and requirements and helped build the instructor example mobile and desktop application using Android Studio or Maven-based Java, JavaFX, TestFX, and Mockito"
+      "Supported 200+ students per semester in object-oriented programming, Agile/Scrum, Git/GitHub, software design, and team application development through demonstrations, office hours, grading, and project reviews",
+      "Collaborated with course staff on project requirements, assignments, exam questions, and instructor examples using Java/JavaFX or Android tooling with TestFX and Mockito"
     ],
     tags: ["Java", "Object-Oriented Design", "JavaFX", "TestFX", "Mockito", "Git", "Agile"]
   }
@@ -150,12 +159,12 @@ export function ExperienceSection() {
                   </div>
 
                   <div className="min-w-0 flex-1">
-                    <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-2">
-                      <div>
+                    <div className="flex flex-col mb-4 gap-2">
+                      <div className="min-w-0">
                         <h3 className="text-xl font-bold text-foreground">{exp.role}</h3>
                         <div className="text-primary font-medium">{exp.company}</div>
                       </div>
-                      <div className="text-sm font-mono text-muted-foreground md:text-right shrink-0">
+                      <div className="text-sm font-mono text-muted-foreground">
                         <div>{exp.date}</div>
                         <div>{exp.location}</div>
                       </div>

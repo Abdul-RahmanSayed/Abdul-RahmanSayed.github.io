@@ -1,6 +1,6 @@
 # Portfolio Codebase Guide
 
-Last verified against the production source: August 12, 2026.
+Last verified against the website source: October 1, 2026. Career content reflects the September 30, 2026 resume.
 
 ## 1. Executive summary
 
@@ -137,7 +137,7 @@ The typewriter effect uses three state values: the current role index, the visib
 
 The background effect is CSS-only: two large, blurred color circles use the pulse animation. The entrance of the text and photo uses Framer Motion.
 
-The headshot is imported through the `@assets` alias. Vite resolves that alias to the repository-level `attached_assets` directory and turns the imported image into a built asset URL. The resume link instead uses the same versioned Cloudinary PDF URL as the Resume section. Its anchor includes a `download` attribute, although cross-origin browser behavior determines whether the PDF is downloaded directly or opened first.
+The headshot is imported through the `@assets` alias. Vite resolves that alias to the repository-level `attached_assets` directory and turns the imported image into a built asset URL. The resume link imports the versioned Cloudinary PDF URL and filename from `src/lib/resume.ts`, shared with the Resume section. Its anchor includes a `download` attribute and opens in a new tab with safe link attributes; cross-origin browser behavior determines whether the PDF is downloaded directly or opened first.
 
 ### 4.3 About section
 
@@ -147,11 +147,11 @@ The About section is static content arranged as one column on smaller screens an
 
 - a second use of the headshot;
 - a professional summary;
-- Georgia Tech degree, thread, and honors details;
-- the Azure Fundamentals certification; and
+- Georgia Tech degree, December 2023 graduation date, thread, and honors details;
+- the Azure Fundamentals and Google AI Professional certifications; and
 - a full-stack software engineering career statement that also calls out APIs, data, and applied AI.
 
-The professional summary positions Abdul-Rahman's experience across full-stack software development, AI evaluation and instruction, Salesforce platform development, and controls engineering. It emphasizes practical, maintainable systems built across interfaces, backend services, APIs, data workflows, automation, and AI-assisted tools.
+The professional summary positions Abdul-Rahman's experience across full-stack engineering, AI evaluation and instruction, Salesforce development, and controls engineering. Recent examples include a Flutter app integrated with Python/FastAPI and Azure SQL, the FDA data pipeline, and documentation that supports onboarding and maintenance.
 
 The image begins in grayscale and transitions to color on hover. The image and text columns use separate scroll-triggered entrance animations. There is no data request or component state; editing the JSX changes the displayed content directly.
 
@@ -161,6 +161,8 @@ File: `artifacts/portfolio/src/components/SkillsSection.tsx`
 
 `skillsData` is a hardcoded array of eight categories. The component maps categories into cards and maps each category's skills into badges. Cards animate into view once, with a small delay based on their array index.
 
+The categories cover front-end/mobile development, backend/APIs, AI/ML, data/visualization, databases, testing, developer tooling, and cloud/engineering. The September resume refresh adds Dart, Flutter, FastAPI, SQLAlchemy, Azure SQL, Azure App Service, pandas, NumPy, Matplotlib, and data-pipeline work while retaining supported earlier portfolio skills.
+
 The grid changes from one column to two at `md` and four at `lg`. Hovering a card lifts it by one Tailwind spacing step, adds a subtle purple glow, and strengthens its border.
 
 There is no filtering, sorting, or carousel in the production React version.
@@ -169,30 +171,33 @@ There is no filtering, sorting, or carousel in the production React version.
 
 File: `artifacts/portfolio/src/components/ProjectsSection.tsx`
 
-`projectsData` contains four static project records:
+`projectsData` contains five static project records:
 
-1. Portfolio Website
-2. GAN-Based Image Colorization & Upscaling
-3. Interactive Parallel Coordinate Plot
-4. Jim's Dungeon: Dungeon Crawler
+1. FDA Adverse Event Data Pipeline
+2. Portfolio Website
+3. Artificial Neural Intelligence Machine Entity
+4. Interactive Parallel Coordinate Plot
+5. Jim's Dungeon: Dungeon Crawler
 
-Each object supplies the title, date, summary, technology badges, accomplishments, GitHub URL, optional live URL, and color classes. The render loop turns those values into a responsive one-column/two-column card grid.
+Each typed `ProjectEntry` supplies the title, date, summary, technology badges, accomplishments, nullable GitHub/live URLs, an optional report URL, and color classes. The render loop turns those values into a responsive one-column/two-column card grid. Headers use a minimum height so longer titles can wrap without clipping. The two older coursework projects remain as additional portfolio history.
 
 Every card has a gradient header, stack badges, accomplishment bullets, and action buttons. The shared `Button` component can render its child anchor through Radix `Slot`, which preserves button styling while keeping correct link behavior.
 
-The Portfolio Website record describes the actual React 19, TypeScript, Vite, Tailwind CSS, and Framer Motion implementation. It also documents the Cloudinary resume, FormSubmit contact form, theme system, and deployment on pushes to `master`. Its GitHub button links directly to this repository. The remaining project cards still link to the general GitHub profile.
+The FDA record links directly to `Abdul-RahmanSayed/FDA-Food-Safety-Data-Pipeline` and records the resume's ingestion totals, validation checks, and 98 Node.js / 31 Python test counts. The Portfolio Website record describes the actual React implementation and links directly to this repository, with a Live Demo button for the deployed site.
 
-When `live` is absent, the Live Demo control renders as a disabled button with a `No Demo` label.
+The GAN project links to the user-provided report at `https://abhay-sheshadri.github.io/ML4641-Project/` using a **Project Report** button. Its full source is currently unavailable, so it has no GitHub button. Older cards that link to the general profile use **GitHub Profile** rather than implying a project-specific repository. When neither `report` nor `live` exists, the secondary action renders as a disabled **No Demo** button.
 
 ### 4.6 Experience timeline
 
 File: `artifacts/portfolio/src/components/ExperienceSection.tsx`
 
-`experienceData` contains six roles: iD Tech, SkillStorm, ProAutomated, Invisible Technologies, MessageGears, and Georgia Institute of Technology. Each entry provides the employer, role, dates, location, resume-derived impact bullets, technology tags, and an optional logo asset.
+`experienceData` contains seven roles: Confidential Pre-Launch Technology Venture, iD Tech, SkillStorm, ProAutomated, Invisible Technologies, MessageGears, and Georgia Institute of Technology. Each entry provides the employer, role, dates, location, resume-derived impact bullets, technology tags, and an optional logo asset.
 
-Every current entry has a dedicated company logo. When a future entry omits `logo`, the renderer automatically uses `attached_assets/experience-default.svg`; no current card uses that fallback. Logos are imported through `@assets`, rendered inside a fixed white logo panel with `object-contain`, and lazy-loaded. Dedicated logos receive company-specific alternate text; the generic fallback is decorative because the adjacent card already names the employer.
+The current part-time full-stack role begins in January 2026 and keeps the venture anonymous. Its test/coverage numbers are qualified as an integration baseline. iD Tech ends in August 2026; SkillStorm is dated January 2026. MessageGears' 96% improvement is attributed to the internship team, compared with the prior year, and measured using Agile story points.
 
-The desktop layout is a vertical stack of cards with the company image beside the content. The layout stacks the logo above the content on narrow screens, where each entry also receives an absolute-positioned line and dot to create a timeline. Cards animate once as they enter the viewport, with later entries receiving slightly longer delays.
+The confidential venture omits `logo` and uses `attached_assets/experience-default.svg`. Other entries use dedicated company logos. Logos are imported through `@assets`, rendered inside a fixed white logo panel with `object-contain`, and lazy-loaded. Dedicated logos receive company-specific alternate text; the generic fallback is decorative because the adjacent card already names the employer.
+
+The desktop layout is a vertical stack of cards with the company image beside the content. Role titles, employers, dates, and locations stack inside the content area to accommodate longer names and non-contiguous employment periods. The layout stacks the logo above the content on narrow screens, where each entry also receives an absolute-positioned line and dot to create a timeline. Cards animate once as they enter the viewport, with later entries receiving slightly longer delays.
 
 All professional content is local JSX data. "Present" and other dates do not update automatically.
 
@@ -204,7 +209,7 @@ The section uses the same versioned Cloudinary resume URL as the hero and offers
 
 If the browser cannot embed PDFs, the nested fallback content explains the limitation and offers another download link. The decorative title bar above the viewer is part of the page, not part of the PDF viewer.
 
-The production resume is `https://res.cloudinary.com/dyd2wkozw/image/upload/v1785798732/Sayed_AbdulRahman_Resume_072426a.pdf`. That URL is currently duplicated as a constant in `HeroSection.tsx` and `ResumeSection.tsx`, so both must be updated when the resume changes. PDFs under `attached_assets` and `src/assets/pdfs` are historical files and are not imported by the production React site.
+The current resume is `https://res.cloudinary.com/dyd2wkozw/image/upload/v1790823794/Abdul_Rahman_Sayed_Resume_093026.pdf`. The URL and displayed/download filename are exported by `artifacts/portfolio/src/lib/resume.ts` and imported by both Hero and Resume, so replacements have a single source of truth. The viewer filename wraps on smaller screens. PDFs under `attached_assets` and `src/assets/pdfs` are historical files and are not imported by the production React site.
 
 ### 4.8 Contact section
 
@@ -310,7 +315,7 @@ Production-local assets:
 - `artifacts/portfolio/public/favicon.svg`
 - `artifacts/portfolio/public/opengraph.jpg`
 
-The headshot and experience images are imported and emitted with build-managed URLs. The generic experience image is available but is not assigned to a current role. Files in `public` are copied to the output root without import processing. The displayed resume is hosted externally by Cloudinary rather than emitted by the Vite build.
+The headshot and experience images are imported and emitted with build-managed URLs. The generic experience image is used by the confidential venture. Files in `public` are copied to the output root without import processing. The displayed resume is hosted externally by Cloudinary rather than emitted by the Vite build.
 
 `opengraph.jpg` is present but is not referenced by an Open Graph meta tag. The favicon is referenced as the public asset `/favicon.svg`; if the deployment strategy changes, built asset URLs should be rechecked with the configured Vite base.
 
@@ -339,6 +344,7 @@ The code uses semantic sections, headings, labels, buttons, anchors, alternate i
 | `src/components/Footer.tsx` | Copyright and social links |
 | `src/components/ui/` | Generated/reusable UI primitive library |
 | `src/hooks/` | Toast store and currently unused mobile media-query hook |
+| `src/lib/resume.ts` | Shared versioned Cloudinary resume URL and filename |
 | `src/lib/utils.ts` | Tailwind-aware class-name composition |
 | `src/index.css` | Tailwind entry, theme tokens, fonts, and global base styling |
 | `public/` | Static files copied as-is to the build root |
@@ -527,7 +533,7 @@ The API server and database are not deployed by this workflow. GitHub Pages cann
 | Add or update a project | `components/ProjectsSection.tsx` → `projectsData` |
 | Add or update a job | `components/ExperienceSection.tsx` → `experienceData` |
 | Replace the production headshot | update `@assets` imports in Hero and About |
-| Replace the production resume | update the Cloudinary URL constants in Hero and Resume |
+| Replace the production resume | update `resumePdfUrl` and `resumeFilename` in `artifacts/portfolio/src/lib/resume.ts` |
 | Change contact/social URLs | Hero, Contact, and Footer components |
 | Change theme colors or fonts | `artifacts/portfolio/src/index.css` |
 | Change responsive layout | Tailwind classes in the affected component |
@@ -537,7 +543,7 @@ The API server and database are not deployed by this workflow. GitHub Pages cann
 | Replace FormSubmit | change `FORM_ENDPOINT` and adapt the request/response handling, or deploy a backend endpoint |
 | Change GitHub Pages behavior | `.github/workflows/deploy.yml` and possibly `vite.config.ts` |
 
-When replacing the headshot, the least disruptive approach is to keep the imported variable name and change only the `@assets` file path in Hero and About. When replacing the resume, update the duplicated Cloudinary URL constants in Hero and Resume. Avoid editing generated API files directly.
+When replacing the headshot, the least disruptive approach is to keep the imported variable name and change only the `@assets` file path in Hero and About. When replacing the resume, update the shared URL and filename in `src/lib/resume.ts`. Avoid editing generated API files directly.
 
 ## 11. Current limitations and maintenance risks
 
@@ -562,7 +568,7 @@ To avoid future confusion:
 
 - Treat `artifacts/portfolio` as the website source of truth.
 - Treat `.github/workflows/deploy.yml` as the deployment source of truth.
-- Treat the versioned Cloudinary URL shared by `HeroSection.tsx` and `ResumeSection.tsx` as the currently displayed resume.
+- Treat `artifacts/portfolio/src/lib/resume.ts` as the source of truth for the currently displayed resume URL and filename.
 - Treat `lib/api-spec/openapi.yaml` as the API contract source of truth.
 - Treat generated API files as disposable build products.
 - Treat root `src/`, `CHANGELOG.md`, and root Vite/deploy helpers as legacy until they are deliberately removed or restored.

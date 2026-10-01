@@ -44,7 +44,7 @@ export function AboutSection() {
             className="lg:w-2/3 space-y-6 text-muted-foreground"
           >
             <p className="text-lg leading-relaxed text-foreground">
-              Computer Science graduate from Georgia Institute of Technology with hands-on experience across full-stack software development, AI evaluation and instruction, Salesforce platform development, and controls engineering. I enjoy building practical, maintainable systems end to end, from accessible interfaces and backend services to APIs, data workflows, automation, and AI-assisted tools.
+              I'm a Georgia Tech Computer Science graduate with experience in full-stack engineering, AI evaluation and instruction, Salesforce development, and controls engineering. My recent work includes integrating a Flutter mobile app with Python/FastAPI services and Azure SQL, building a tested FDA data pipeline, and documenting the systems so other people can use and maintain them. I enjoy working through the actual problem, building across the stack, and making software more reliable through testing, debugging, and feedback.
             </p>
 
             <div className="bg-card border border-border rounded-xl p-6 shadow-sm">
@@ -54,7 +54,7 @@ export function AboutSection() {
                 <span className="mx-2">•</span>
                 <span>B.S. Computer Science</span>
                 <span className="mx-2">•</span>
-                <span>2020–2024</span>
+                <span>December 2023</span>
               </div>
               <ul className="list-disc list-inside space-y-1 ml-4 text-sm">
                 <li>Threads: Intelligence and Media</li>
@@ -64,12 +64,19 @@ export function AboutSection() {
 
             <div className="bg-card border border-border rounded-xl p-6 shadow-sm">
               <h3 className="text-foreground font-semibold text-xl mb-4">Certifications</h3>
-              <div>
-                <span className="font-medium text-foreground">Microsoft Certified: Azure Fundamentals (AZ-900)</span>
-                <span className="mx-2">•</span>
-                <span>Microsoft</span>
-                <span className="mx-2">•</span>
-                <span>April 2026</span>
+              <div className="space-y-2">
+                <div>
+                  <span className="font-medium text-foreground">Microsoft Certified: Azure Fundamentals (AZ-900)</span>
+                  <span className="mx-2">•</span>
+                  <span>Microsoft</span>
+                  <span className="mx-2">•</span>
+                  <span>April 2026</span>
+                </div>
+                <div>
+                  <span className="font-medium text-foreground">Google AI Professional Certificate</span>
+                  <span className="mx-2">•</span>
+                  <span>Google</span>
+                </div>
               </div>
             </div>
 

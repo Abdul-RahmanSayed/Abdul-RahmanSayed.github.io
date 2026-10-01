@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, ArrowRight, Download } from 'lucide-react';
 import headshotPath from "@assets/Headshot3_1778170238565.jpg";
 import { Button } from './ui/button';
+import { resumeFilename, resumePdfUrl } from '@/lib/resume';
 
-const resumePdfPath = "https://res.cloudinary.com/dyd2wkozw/image/upload/v1785798732/Sayed_AbdulRahman_Resume_072426a.pdf";
 const roles = ["Full-Stack Developer", "Software Engineer", "Applied AI Developer", "Georgia Tech Graduate"];
 
 export function HeroSection() {
@@ -77,7 +77,7 @@ export function HeroSection() {
                 <a href="#projects">View Projects <ArrowRight className="ml-2 w-4 h-4" /></a>
               </Button>
               <Button asChild variant="outline" size="lg" className="rounded-full border-border hover:bg-accent font-medium" data-testid="cta-resume">
-                <a href={resumePdfPath} download="Sayed_AbdulRahman_Resume.pdf">Download Resume <Download className="ml-2 w-4 h-4" /></a>
+                <a href={resumePdfUrl} download={resumeFilename} target="_blank" rel="noopener noreferrer">Download Resume <Download className="ml-2 w-4 h-4" /></a>
               </Button>
               <Button asChild variant="ghost" size="lg" className="rounded-full hover:bg-accent hover:text-primary font-medium" data-testid="cta-contact">
                 <a href="#contact">Contact Me</a>
