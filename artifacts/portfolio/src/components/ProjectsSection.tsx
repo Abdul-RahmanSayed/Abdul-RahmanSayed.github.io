@@ -22,7 +22,7 @@ const projectsData: ProjectEntry[] = [
     id: 5,
     title: "FDA Adverse Event Data Pipeline",
     date: "September 2026",
-    description: "Technical take-home project for downloading, validating, and analyzing FDA adverse-event reports with a Node.js ingestion pipeline and Python analysis tools.",
+    description: "Technical take-home project for downloading, validating, and analyzing FDA adverse-event reports with a Node.js ingestion pipeline and Python analysis tools. Extended with a saved-snapshot Explorer for interactive filtering and report browsing.",
     stack: ["Node.js", "Python", "pandas", "NumPy", "Matplotlib", "REST APIs"],
     accomplishments: [
       "Downloaded 97,652 FDA adverse-event reports across 987 JSON files using next-page pagination, configurable concurrency, pacing, exponential-backoff retries, duplicate-ID checks, and completion manifests",
@@ -30,7 +30,7 @@ const projectsData: ProjectEntry[] = [
       "Verified ingestion with 98 Node.js tests and analysis with 31 Python tests; reconciled saved record counts, unique IDs, date boundaries, and window totals to check dataset consistency"
     ],
     github: "https://github.com/Abdul-RahmanSayed/FDA-Food-Safety-Data-Pipeline",
-    live: null,
+    live: "https://abdul-rahmansayed.github.io/Project-Lab/#/fda",
     gradient: "from-cyan-500/20 to-blue-500/20",
     borderGlow: "group-hover:border-cyan-500/50 group-hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]"
   },
