@@ -1,8 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <script>
+      try {
+        const theme = localStorage.getItem('theme') === 'light' ? 'light' : 'dark';
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+        document.documentElement.style.colorScheme = theme;
+      } catch { document.documentElement.style.colorScheme = 'dark'; }
+    </script>
     <title>Abdul-Rahman Sayed Portfolio</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -106,8 +106,10 @@
 
 @layer base {
   html {
+    color-scheme: light;
     scroll-behavior: smooth;
   }
+  html.dark { color-scheme: dark; }
   
   * {
     @apply border-border;

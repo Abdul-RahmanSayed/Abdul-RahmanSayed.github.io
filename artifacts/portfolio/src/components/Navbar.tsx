@@ -1,19 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Moon, Sun } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const [isDark, setIsDark] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem('theme');
-      if (stored) return stored === 'dark';
-      return true; // Default dark
-    }
-    return true;
-  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,17 +15,6 @@ export function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  useEffect(() => {
-    const root = window.document.documentElement;
-    if (isDark) {
-      root.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      root.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [isDark]);
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
@@ -72,7 +54,7 @@ export function Navbar() {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'py-3 bg-background/80 backdrop-blur-md border-b border-border shadow-sm' : 'py-5 bg-transparent'}`}>
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <a href="#hero" className="text-2xl font-bold text-primary tracking-tighter" data-testid="nav-logo">
+        <a href={`${import.meta.env.BASE_URL}#hero`} className="text-2xl font-bold text-primary tracking-tighter" data-testid="nav-logo">
           AS
         </a>
 
@@ -82,7 +64,7 @@ export function Navbar() {
             {navLinks.map((link) => (
               <li key={link.name}>
                 <a 
-                  href={link.href}
+                  href={`${import.meta.env.BASE_URL}${link.href}`}
                   data-testid={`nav-link-${link.name.toLowerCase()}`}
                   className={`text-sm font-medium transition-colors hover:text-primary ${activeSection === link.href.substring(1) ? 'text-primary' : 'text-muted-foreground'}`}
                 >
@@ -92,25 +74,12 @@ export function Navbar() {
             ))}
           </ul>
           
-          <button 
-            onClick={() => setIsDark(!isDark)}
-            className="p-2 rounded-full hover:bg-accent text-foreground transition-colors"
-            data-testid="theme-toggle"
-            aria-label="Toggle theme"
-          >
-            {isDark ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
+          <ThemeToggle testId="theme-toggle" />
         </div>
 
         {/* Mobile Toggle */}
         <div className="md:hidden flex items-center space-x-4">
-          <button 
-            onClick={() => setIsDark(!isDark)}
-            className="p-2 rounded-full hover:bg-accent text-foreground transition-colors"
-            data-testid="theme-toggle-mobile"
-          >
-            {isDark ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
+          <ThemeToggle testId="theme-toggle-mobile" />
           
           <button 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -135,7 +104,7 @@ export function Navbar() {
               {navLinks.map((link) => (
                 <li key={link.name}>
                   <a 
-                    href={link.href}
+                    href={`${import.meta.env.BASE_URL}${link.href}`}
                     data-testid={`nav-link-mobile-${link.name.toLowerCase()}`}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={`block py-2 text-base font-medium transition-colors hover:text-primary ${activeSection === link.href.substring(1) ? 'text-primary' : 'text-muted-foreground'}`}

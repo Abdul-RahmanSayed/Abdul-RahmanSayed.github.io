@@ -1,6 +1,7 @@
 # Portfolio Codebase Guide
 
 Last verified against the website source: October 1, 2026. Career content reflects the September 30, 2026 resume.
+Navigation and shared-theme sections updated and checked locally on October 26, 2026; these follow-up changes are not yet published.
 
 ## 1. Executive summary
 
@@ -73,8 +74,8 @@ QueryClientProvider
 TooltipProvider
     ↓
 Wouter router
+    ├── Navbar (all routes)
     ├── path "/" → Home
-    │                ├── Navbar
     │                ├── Hero
     │                ├── About
     │                ├── Skills
@@ -88,9 +89,9 @@ Wouter router
 Toaster is mounted beside the router, but no current feature creates a toast.
 ```
 
-`main.tsx` mounts React into `<div id="root">` and imports the global stylesheet. There is no server rendering, hydration, global application store, or boot-time API call.
+`main.tsx` applies the saved appearance, mounts React into `<div id="root">` and imports the global stylesheet. The HTML bootstrap also applies the preference before rendering. There is no server rendering, hydration or boot-time API call.
 
-`App.tsx` creates one TanStack Query `QueryClient`, adds global tooltip/toast providers, and gives Wouter a base path derived from Vite's `BASE_URL`. The query provider is ready for generated API hooks, but the current portfolio never calls one.
+`App.tsx` creates one TanStack Query `QueryClient`, adds global tooltip/toast providers, and gives Wouter a base path derived from Vite's `BASE_URL`. Navbar is mounted before the route switch, so navigation and appearance controls are available on every portfolio route. The query provider is ready for generated API hooks, but the current portfolio never calls one.
 
 `Home.tsx` is the page composition layer. It renders every portfolio section in a fixed order. Navigation between portfolio content uses URL hash links such as `#projects`; these are sections on one page, not separate routes.
 
@@ -100,22 +101,21 @@ Toaster is mounted beside the router, but no current feature creates a toast.
 
 File: `artifacts/portfolio/src/components/Navbar.tsx`
 
-The navbar is fixed above the page and owns four pieces of React state:
+The navbar is fixed above every portfolio route and owns three pieces of React state:
 
 | State | Purpose |
 | --- | --- |
 | `isScrolled` | Becomes `true` after 20 pixels of vertical scroll and enables the frosted background, border, compact padding, and shadow. |
 | `isMobileMenuOpen` | Controls whether the animated mobile menu is rendered. |
 | `activeSection` | Selects the highlighted navigation link. |
-| `isDark` | Controls the `.dark` class and the displayed sun/moon icon. |
 
-On mount, the component registers a window scroll listener. A second effect adds or removes `.dark` on the root `<html>` element and writes `theme=dark|light` to `localStorage`. If the visitor has no stored preference, dark mode is the default.
+On mount, the component registers a window scroll listener. The reusable `ThemeToggle.tsx` controls instead subscribe through `lib/theme.ts`. Both desktop and mobile buttons share the existing `localStorage` key `theme=dark|light`, with dark as the default. The root `.dark` class and native `color-scheme` update together. Changes synchronize across controls, other same-origin tabs and restored pages; storage failures leave the current page's control usable. Project Lab implements the same preference contract, so the deployed apps can share appearance under the portfolio origin without a settings API. Until both updated sites are published, this is verified local behavior.
 
-A third effect creates one `IntersectionObserver` per section (`hero`, `about`, `skills`, `projects`, `experience`, `resume`, and `contact`). When at least 30% of a section intersects the viewport, that section becomes active. Cleanup disconnects every observer when the navbar unmounts.
+A separate effect creates one `IntersectionObserver` per section (`hero`, `about`, `skills`, `projects`, `experience`, `resume`, and `contact`). When at least 30% of a section intersects the viewport, that section becomes active. Cleanup disconnects every observer when the navbar unmounts.
 
 Desktop navigation appears at Tailwind's `md` breakpoint (768px). Below that width, a menu icon toggles a vertically stacked menu. Framer Motion's `AnimatePresence` animates the mobile panel in and out, and choosing a link closes it.
 
-All links are hash anchors. Global `scroll-behavior: smooth` makes section changes scroll rather than jump.
+Section links include the homepage base path, for example `/#projects`, so they also return home from the client-side not-found screen. Global `scroll-behavior: smooth` makes section changes scroll rather than jump. The not-found screen uses the normal theme tokens and includes an explicit return link.
 
 ### 4.2 Hero section
 

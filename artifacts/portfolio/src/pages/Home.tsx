@@ -1,5 +1,4 @@
 import React from 'react';
-import { Navbar } from '@/components/Navbar';
 import { HeroSection } from '@/components/HeroSection';
 import { AboutSection } from '@/components/AboutSection';
 import { SkillsSection } from '@/components/SkillsSection';
@@ -12,7 +11,6 @@ import { Footer } from '@/components/Footer';
 export default function Home() {
   return (
     <div className="bg-background min-h-screen text-foreground selection:bg-primary/30 selection:text-primary">
-      <Navbar />
       <main>
         <HeroSection />
         <AboutSection />
