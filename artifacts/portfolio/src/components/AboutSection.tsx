@@ -44,7 +44,7 @@ export function AboutSection() {
             className="lg:w-2/3 space-y-6 text-muted-foreground"
           >
             <p className="text-lg leading-relaxed text-foreground">
-              I'm a Georgia Tech Computer Science graduate with experience in full-stack engineering, AI evaluation and instruction, Salesforce development, and controls engineering. My recent work includes integrating a Flutter mobile app with Python/FastAPI services and Azure SQL, building a tested FDA data pipeline, and documenting the systems so other people can use and maintain them. I enjoy working through the actual problem, building across the stack, and making software more reliable through testing, debugging, and feedback.
+              I'm a Georgia Tech Computer Science graduate with experience in full-stack engineering, AI evaluation and instruction, Salesforce development, and controls engineering. My recent work includes integrating a Flutter mobile app with Python/FastAPI services and Azure SQL, recovering Azure deployments, and expanding a tested FDA data pipeline into a deployed React, D3.js, and FastAPI Explorer backed by SQLite. I document the systems so other people can use and maintain them. I enjoy working through the actual problem, building across the stack, and making software more reliable through testing, debugging, and feedback.
             </p>
 
             <div className="bg-card border border-border rounded-xl p-6 shadow-sm">

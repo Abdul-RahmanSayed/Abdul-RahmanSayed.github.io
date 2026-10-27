@@ -27,17 +27,19 @@ const experienceData: ExperienceEntry[] = [
     date: "January 2026 - Present",
     location: "Remote",
     bullets: [
-      "Led production-readiness and integration of a team-built cross-platform Flutter/Dart app with Python, FastAPI, SQLAlchemy, and Azure SQL",
-      "Designed non-destructive schema migrations that preserved data and enforced integrity constraints; built backward-compatible REST adapters to resolve ID, authentication, timestamp, notification, and state-synchronization contracts",
-      "Improved Azure reliability through database compatibility fixes, transient retries, request tracing, standardized errors, CORS, secure API logging, and GitHub Actions deployments",
-      "Validated core journeys at an integration baseline of 57 passing frontend/backend tests and 88.8% backend coverage, plus static analysis; documented architecture, onboarding, migrations, deployment, testing, and troubleshooting"
+      "Led production-readiness and integration of a team-built cross-platform Flutter/Dart mobile app with Python, FastAPI, SQLAlchemy, and Azure SQL",
+      "Designed non-destructive Alembic migrations that preserved data and enforced integrity constraints; built backward-compatible REST adapters to resolve ID, authentication, timestamp, notification, and state-synchronization contracts",
+      "Improved Azure reliability through database compatibility fixes, transient retries, request tracing, standardized errors, CORS, secure API logging, and guarded GitHub Actions deployments",
+      "Recovered Azure App Service startup by isolating an unconfigured media provider; backed up and migrated Azure SQL, corrected deployment-branch settings, and verified live liveness and readiness checks",
+      "Validated core journeys in October with 41 passing backend tests, 59 Flutter tests, 88.05% backend coverage, and production-mode smoke tests; documented release safeguards and recovery procedures",
+      "Previously validated an integration baseline of 57 passing frontend/backend tests and 88.8% backend coverage, plus static analysis; documented architecture, onboarding, migrations, deployment, testing, and troubleshooting"
     ],
-    tags: ["Flutter", "Dart", "Python", "FastAPI", "SQLAlchemy", "Azure SQL", "REST APIs", "GitHub Actions", "Integration Testing"]
+    tags: ["Flutter", "Dart", "Python", "FastAPI", "SQLAlchemy", "Alembic", "Azure SQL", "Azure App Service", "REST APIs", "GitHub Actions", "Integration Testing"]
   },
   {
     id: 1,
     company: "iD Tech",
-    role: "Online Instructor",
+    role: "Online Instructor (Part-Time)",
     date: "April 2026 - August 2026; May 2020 - August 2021",
     location: "Remote / Alpharetta, GA",
     logo: idTechLogo,
@@ -56,7 +58,8 @@ const experienceData: ExperienceEntry[] = [
     location: "Atlanta, GA",
     logo: skillStormLogo,
     bullets: [
-      "Supported Salesforce data modeling and workflow automation using custom objects, relationships, Flows, and Apex, standardizing fields and transformation logic for data integrity and reporting"
+      "Supported Salesforce data modeling and workflow automation using custom objects, relationships, normalized schemas, Flows, and Apex, standardizing fields and transformation logic for data integrity, reporting, and downstream SQL readiness",
+      "Assigned to an incoming financial-services project canceled before launch due to client funding changes; the affected cohort was released January 30, 2026"
     ],
     tags: ["Salesforce", "Apex", "Flows", "SQL", "Data Modeling"]
   },
@@ -65,12 +68,12 @@ const experienceData: ExperienceEntry[] = [
     company: "ProAutomated",
     role: "Field Service Engineer",
     date: "February 2025 - December 2025",
-    location: "Atlanta, GA / Thermo Systems at QTS",
+    location: "Atlanta, GA / Contracted to Thermo Systems at QTS",
     logo: proAutomatedLogo,
     bullets: [
       "Programmed and commissioned Allen-Bradley PLC controls, performing EPMS/BMS functional and sequence testing, I/O checkout, Ignition SCADA validation, networking, and device-communication troubleshooting in data centers",
-      "Diagnosed software, controls, and network issues within safety constraints; reconciled devices, vendor schematics, SCADA data, and checklists to unblock commissioning",
-      "Compiled discrepancy logs, photos, and vendor evidence, and explained mismatches to QTS and Thermo Systems stakeholders to support approved vendor-specific checklists and ongoing reporting",
+      "Diagnosed software, controls, and network issues and improved automation logic and configurations within safety constraints; reconciled devices, vendor schematics, SCADA data, and checklists to unblock commissioning",
+      "Compiled discrepancy logs, photos, and vendor evidence, and explained mismatches to client-facing QTS and Thermo Systems stakeholders to support approved vendor-specific checklists and ongoing written reporting",
       "Balanced commissioning and sequence-test demands during staffing gaps; onboarded three initial new hires and coached co-ops through demos, reference guides, and independent checks, helping trainees approach experienced peers' efficiency within two weeks"
     ],
     tags: ["Allen-Bradley PLC", "EPMS/BMS", "Ignition SCADA", "Network Troubleshooting", "Commissioning", "Onboarding"]

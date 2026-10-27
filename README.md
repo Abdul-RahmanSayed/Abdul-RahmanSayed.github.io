@@ -1,6 +1,6 @@
 # Portfolio Website
 
-A modern, production-quality static SPA portfolio for Abdul-Rahman Sayed — a Georgia Tech Computer Science graduate specializing in Front-End Development and Software Engineering.
+A modern, production-quality static SPA portfolio for Abdul-Rahman Sayed — a Georgia Tech Computer Science graduate with experience in full-stack software engineering, front-end development, mobile applications, APIs, data pipelines, and applied AI.
 
 For a detailed walkthrough of the production application, every user-facing feature, the supporting workspace packages, deployment flow, legacy Vue code, and current limitations, see [docs/CODEBASE_GUIDE.md](docs/CODEBASE_GUIDE.md).
 

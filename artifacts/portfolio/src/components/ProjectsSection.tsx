@@ -20,13 +20,16 @@ type ProjectEntry = {
 const projectsData: ProjectEntry[] = [
   {
     id: 5,
-    title: "FDA Adverse Event Data Pipeline",
-    date: "September 2026",
-    description: "Technical take-home project for downloading, validating, and analyzing FDA adverse-event reports with a Node.js ingestion pipeline and Python analysis tools. Extended with a saved-snapshot Explorer for interactive filtering and report browsing.",
-    stack: ["Node.js", "Python", "pandas", "NumPy", "Matplotlib", "REST APIs"],
+    title: "FDA Adverse Event Explorer",
+    date: "September 2026 - October 2026",
+    description: "Technical take-home and independent extension for downloading, validating, and analyzing FDA adverse-event reports. A Node.js ingestion pipeline and Python analysis tools power a deployed React/TypeScript/D3 Explorer backed by FastAPI and versioned read-only SQLite releases.",
+    stack: ["React", "TypeScript", "D3.js", "FastAPI", "SQLite", "Node.js", "Python", "pandas", "NumPy", "Matplotlib", "REST APIs"],
     accomplishments: [
-      "Downloaded 97,652 FDA adverse-event reports across 987 JSON files using next-page pagination, configurable concurrency, pacing, exponential-backoff retries, duplicate-ID checks, and completion manifests",
+      "Downloaded 97,652 FDA adverse-event reports across 987 JSON files using cursor pagination, configurable bounded concurrency, pacing, exponential-backoff retries, duplicate-ID checks, and completion manifests",
       "Implemented year and raw product-name substring filters, formatting normalization, within-report term deduplication, age-unit conversion, statistical summaries, report rankings, and timestamped charts",
+      "Preserved CLI analysis rules in a shared Python package and versioned read-only SQLite releases; built a FastAPI and React/TypeScript/D3 Explorer with year and product filters, accessible tables, report pages and details, and stale-response protection",
+      "Reused the prepared default overview and bounded SQL work; measured 152 ms warm default p95 over 50 hosted requests with five concurrent readers and about 100 MiB peak process RSS",
+      "Deployed through GitHub Pages and Render Free with a labeled saved fallback; verified Python/SQLite parity, hosted requests, sleep/wake recovery, and restoration of matching releases",
       "Verified ingestion with 98 Node.js tests and analysis with 31 Python tests; reconciled saved record counts, unique IDs, date boundaries, and window totals to check dataset consistency"
     ],
     github: "https://github.com/Abdul-RahmanSayed/FDA-Food-Safety-Data-Pipeline",

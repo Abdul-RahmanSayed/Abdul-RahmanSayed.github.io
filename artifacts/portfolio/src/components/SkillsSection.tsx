@@ -8,7 +8,7 @@ const skillsData = [
   },
   {
     category: "Back-End & APIs",
-    skills: ["Python", "Java", "Node.js", "FastAPI", "SQLAlchemy", "Apex", "C#", "REST APIs", "JSON", "XML"]
+    skills: ["Python", "Java", "Node.js", "FastAPI", "SQLAlchemy", "Alembic", "Apex", "C#", "REST APIs", "JSON", "XML"]
   },
   {
     category: "AI & Machine Learning",
@@ -20,11 +20,11 @@ const skillsData = [
   },
   {
     category: "Databases",
-    skills: ["SQL", "Azure SQL", "MySQL", "MongoDB", "NoSQL", "SOQL", "SOSL", "Schema Migrations"]
+    skills: ["SQL", "Azure SQL", "SQLite", "MySQL", "MongoDB", "NoSQL", "SOQL", "SOSL", "Schema Migrations"]
   },
   {
     category: "Testing & QA",
-    skills: ["Unit Testing", "Integration Testing", "End-to-End Testing", "Cypress", "Selenium", "Mockito", "TestFX", "Root-Cause Analysis"]
+    skills: ["Unit Testing", "Integration Testing", "End-to-End Testing", "pytest", "Playwright", "Cypress", "Selenium", "Mockito", "TestFX", "Root-Cause Analysis"]
   },
   {
     category: "Developer Tooling",

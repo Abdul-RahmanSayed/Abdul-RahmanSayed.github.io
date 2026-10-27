@@ -1,6 +1,7 @@
 # Portfolio Codebase Guide
 
-Last verified against the website source: October 1, 2026. Career content reflects the September 30, 2026 resume.
+Career content updated from the October 26, 2026 resume. The embedded PDF and download links still point to the September 30, 2026 asset until the owner uploads and configures the replacement.
+Architecture walkthrough last verified against the website source on October 1, 2026.
 Navigation and shared-theme sections updated and checked locally on October 26, 2026; these follow-up changes are not yet published.
 
 ## 1. Executive summary
@@ -163,6 +164,8 @@ File: `artifacts/portfolio/src/components/SkillsSection.tsx`
 
 The categories cover front-end/mobile development, backend/APIs, AI/ML, data/visualization, databases, testing, developer tooling, and cloud/engineering. The September resume refresh adds Dart, Flutter, FastAPI, SQLAlchemy, Azure SQL, Azure App Service, pandas, NumPy, Matplotlib, and data-pipeline work while retaining supported earlier portfolio skills.
 
+The October refresh also adds Alembic, SQLite, pytest, and Playwright without removing earlier skills.
+
 The grid changes from one column to two at `md` and four at `lg`. Hovering a card lifts it by one Tailwind spacing step, adds a subtle purple glow, and strengthens its border.
 
 There is no filtering, sorting, or carousel in the production React version.
@@ -173,7 +176,7 @@ File: `artifacts/portfolio/src/components/ProjectsSection.tsx`
 
 `projectsData` contains five static project records:
 
-1. FDA Adverse Event Data Pipeline
+1. FDA Adverse Event Explorer
 2. Portfolio Website
 3. Artificial Neural Intelligence Machine Entity
 4. Interactive Parallel Coordinate Plot
@@ -185,6 +188,8 @@ Every card has a gradient header, stack badges, accomplishment bullets, and acti
 
 The FDA record links directly to `Abdul-RahmanSayed/FDA-Food-Safety-Data-Pipeline` and records the resume's ingestion totals, validation checks, and 98 Node.js / 31 Python test counts. The Portfolio Website record describes the actual React implementation and links directly to this repository, with a Live Demo button for the deployed site.
 
+The FDA project now spans September through October 2026 and describes the React/TypeScript/D3 Explorer, FastAPI API, shared Python analysis rules, and versioned read-only SQLite releases. It retains the original ingestion and CLI-analysis details, adds the measured warm-default benchmark with its sample and concurrency qualifiers, and documents GitHub Pages/Render Free hosting, the labeled saved fallback, parity checks, sleep/wake recovery, and release restoration. Its Live Demo button opens the existing Project Lab Explorer link. These are features of the linked project, not a backend added to the static portfolio.
+
 The GAN project links to the user-provided report at `https://abhay-sheshadri.github.io/ML4641-Project/` using a **Project Report** button. Its full source is currently unavailable, so it has no GitHub button. Older cards that link to the general profile use **GitHub Profile** rather than implying a project-specific repository. When neither `report` nor `live` exists, the secondary action renders as a disabled **No Demo** button.
 
 ### 4.6 Experience timeline
@@ -193,7 +198,7 @@ File: `artifacts/portfolio/src/components/ExperienceSection.tsx`
 
 `experienceData` contains seven roles: Confidential Pre-Launch Technology Venture, iD Tech, SkillStorm, ProAutomated, Invisible Technologies, MessageGears, and Georgia Institute of Technology. Each entry provides the employer, role, dates, location, resume-derived impact bullets, technology tags, and an optional logo asset.
 
-The current part-time full-stack role begins in January 2026 and keeps the venture anonymous. Its test/coverage numbers are qualified as an integration baseline. iD Tech ends in August 2026; SkillStorm is dated January 2026. MessageGears' 96% improvement is attributed to the internship team, compared with the prior year, and measured using Agile story points.
+The current part-time full-stack role begins in January 2026 and keeps the venture anonymous. Its October validation snapshot lists 41 backend tests, 59 Flutter tests, 88.05% backend coverage, and production-mode smoke tests. The earlier integration baseline of 57 frontend/backend tests and 88.8% coverage remains separately labeled as historical, alongside the existing static-analysis and documentation work; these snapshots are not combined into one test total. The role also describes Alembic migrations, Azure startup recovery, database backup/migration, guarded deployments, release safeguards, and recovery procedures. iD Tech's part-time instructor role ends in August 2026; SkillStorm is dated January 2026 and explains the canceled financial-services project and cohort release on January 30. MessageGears' 96% improvement is attributed to the internship team, compared with the prior year, and measured using Agile story points.
 
 The confidential venture omits `logo` and uses `attached_assets/experience-default.svg`. Other entries use dedicated company logos. Logos are imported through `@assets`, rendered inside a fixed white logo panel with `object-contain`, and lazy-loaded. Dedicated logos receive company-specific alternate text; the generic fallback is decorative because the adjacent card already names the employer.
 
