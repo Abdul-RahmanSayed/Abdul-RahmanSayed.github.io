@@ -24,7 +24,7 @@ const skillsData = [
   },
   {
     category: "Testing & QA",
-    skills: ["Unit Testing", "Integration Testing", "End-to-End Testing", "pytest", "Playwright", "Cypress", "Selenium", "Mockito", "TestFX", "Root-Cause Analysis"]
+    skills: ["Automated Testing", "Unit Testing", "Integration Testing", "End-to-End Testing", "pytest", "Playwright", "Cypress", "Selenium", "Mockito", "TestFX", "Root-Cause Analysis"]
   },
   {
     category: "Developer Tooling",
@@ -32,7 +32,7 @@ const skillsData = [
   },
   {
     category: "Cloud & Engineering",
-    skills: ["Microsoft Azure", "Azure App Service", "Salesforce", "Unity", "Godot", "GLSL", "Object-Oriented Design", "Data Structures", "Algorithms", "Agile/Scrum", "CI/CD"]
+    skills: ["Microsoft Azure", "Azure App Service", "Salesforce", "Unity", "Godot", "GLSL", "Object-Oriented Programming", "Object-Oriented Design", "Data Structures", "Algorithms", "Agile/Scrum", "CI/CD"]
   }
 ];
 

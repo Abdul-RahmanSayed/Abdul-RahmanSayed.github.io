@@ -44,7 +44,7 @@ const projectsData: ProjectEntry[] = [
     description: "Responsive single-page portfolio built with React 19, TypeScript, Vite, Tailwind CSS, and Framer Motion.",
     stack: ["React 19", "TypeScript", "Vite 7", "Tailwind CSS 4", "Wouter", "Framer Motion", "GitHub Actions"],
     accomplishments: [
-      "Built reusable responsive components with IntersectionObserver navigation, localStorage themes, lazy-loaded logos, and safe external-link attributes",
+      "Built reusable responsive components with IntersectionObserver section tracking, navigation and theme controls across routes, saved appearance preferences shared with Project Lab, lazy-loaded logos, and safe external-link attributes",
       "Integrated a Cloudinary-hosted PDF resume and FormSubmit AJAX contact with native validation, honeypot protection, timeout/abort handling, accessible feedback, and email fallback",
       "Automated GitHub Pages deployment with GitHub Actions; the live portfolio remains a static SPA",
       "Developed undeployed Express, OpenAPI/Orval, React Query, Zod, and PostgreSQL/Drizzle scaffolding for future API expansion"
@@ -56,13 +56,14 @@ const projectsData: ProjectEntry[] = [
   },
   {
     id: 2,
-    title: "Artificial Neural Intelligence Machine Entity",
+    title: "GAN-Based Face Colorization and Upscaling (ANIME)",
     date: "September 2022 - December 2022",
-    description: "Georgia Tech team project to colorize and upscale low-resolution black-and-white face images using a Generative Adversarial Network. The project report is available to read.",
+    description: "Artificial Neural Intelligence Machine Entity (ANIME) was a Georgia Tech team project to colorize and upscale low-resolution black-and-white face images using a generative adversarial network. The project report is available to read.",
     stack: ["Python", "TensorFlow", "PyTorch", "GAN"],
     accomplishments: [
-      "Collaborated in a four-person team on a Python GAN-based workflow for image colorization and upscaling",
-      "Compared generated images with ground-truth images to evaluate reconstruction quality"
+      "Contributed Python ML code and technical reporting in a four-person team building a GAN workflow for image colorization and upscaling",
+      "Compared generated images with ground-truth images to evaluate reconstruction quality",
+      "Performed Scrum Master tasks, tracked milestones, and helped define and implement scope by balancing required features, desired features, and delivery time"
     ],
     github: null,
     live: null,

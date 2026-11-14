@@ -8,16 +8,16 @@ import invisibleTechnologiesLogo from '@assets/invisibleTechLogo.png';
 import messageGearsLogo from '@assets/messageGearsLogo.jpg';
 import georgiaTechLogo from '@assets/Georgia-Tech-New-logo-f.png';
 
+type ExperiencePeriod = { date: string; location: string };
+
 type ExperienceEntry = {
   id: number;
   company: string;
   role: string;
-  date: string;
-  location: string;
   logo?: string;
   bullets: string[];
   tags: string[];
-};
+} & (ExperiencePeriod | { periods: ExperiencePeriod[] });
 
 const experienceData: ExperienceEntry[] = [
   {
@@ -31,7 +31,7 @@ const experienceData: ExperienceEntry[] = [
       "Designed non-destructive Alembic migrations that preserved data and enforced integrity constraints; built backward-compatible REST adapters to resolve ID, authentication, timestamp, notification, and state-synchronization contracts",
       "Improved Azure reliability through database compatibility fixes, transient retries, request tracing, standardized errors, CORS, secure API logging, and guarded GitHub Actions deployments",
       "Recovered Azure App Service startup by isolating an unconfigured media provider; backed up and migrated Azure SQL, corrected deployment-branch settings, and verified live liveness and readiness checks",
-      "Validated core journeys in October with 41 passing backend tests, 59 Flutter tests, 88.05% backend coverage, and production-mode smoke tests; documented release safeguards and recovery procedures",
+      "Validated core journeys in October 2026 with 41 passing backend tests, 59 Flutter tests, 88.05% backend coverage, and production-mode smoke tests; documented release safeguards and recovery procedures",
       "Previously validated an integration baseline of 57 passing frontend/backend tests and 88.8% backend coverage, plus static analysis; documented architecture, onboarding, migrations, deployment, testing, and troubleshooting"
     ],
     tags: ["Flutter", "Dart", "Python", "FastAPI", "SQLAlchemy", "Alembic", "Azure SQL", "Azure App Service", "REST APIs", "GitHub Actions", "Integration Testing"]
@@ -40,13 +40,16 @@ const experienceData: ExperienceEntry[] = [
     id: 1,
     company: "iD Tech",
     role: "Online Instructor (Part-Time)",
-    date: "April 2026 - August 2026; May 2020 - August 2021",
-    location: "Remote / Alpharetta, GA",
+    periods: [
+      { date: "April 2026 - July 2026", location: "Remote / Atlanta, GA" },
+      { date: "May 2020 - August 2021", location: "Remote / Alpharetta, GA" }
+    ],
     logo: idTechLogo,
     bullets: [
-      "Taught private and group lessons in Python, Java, JavaScript/p5.js, and ML/AI using scikit-learn, the OpenAI API, Ollama/Llama 3, Google Colab, Tkinter, Unity/C#, and Godot",
-      "Explained AI assistants and local LLM workflows in plain language, adapted analogies through probing questions, and checked understanding through independent coding and learner-friendly guides",
-      "Troubleshot Python packages, Java/JDK, APIs, and cross-platform setups in PyCharm and VS Code for students and instructors; wrote lesson plans, progress summaries, and follow-up resources"
+      "Taught private and group lessons through hands-on projects, adapting analogies through probing questions and checking understanding through independent coding; wrote lesson plans, progress summaries, and follow-up guides",
+      "In 2026, taught Python, Java, ML/AI, and game development using scikit-learn, the OpenAI API, Ollama/Llama 3, Google Colab, Tkinter, Unity/C#, and Godot; explained AI assistants and local LLM workflows in plain language",
+      "Troubleshot Python packages, Java/JDK, APIs, and cross-platform setups in PyCharm and VS Code for students and instructors",
+      "Taught Minecraft game design and JavaScript/p5.js to children ages 7–12 in summers 2020 and 2021, covering file manipulation and introductory discrete math and working with instructors to improve lessons"
     ],
     tags: ["Python", "Java", "JavaScript", "p5.js", "C#", "AI/ML", "scikit-learn", "OpenAI API", "Ollama", "Unity", "Godot"]
   },
@@ -58,7 +61,7 @@ const experienceData: ExperienceEntry[] = [
     location: "Atlanta, GA",
     logo: skillStormLogo,
     bullets: [
-      "Supported Salesforce data modeling and workflow automation using custom objects, relationships, normalized schemas, Flows, and Apex, standardizing fields and transformation logic for data integrity, reporting, and downstream SQL readiness",
+      "Built Salesforce custom objects, relationships, Flows, and Apex code during project preparation; standardized fields and transformation logic and normalized data models for workflow automation, data integrity, reporting, and downstream SQL readiness",
       "Assigned to an incoming financial-services project canceled before launch due to client funding changes; the affected cohort was released January 30, 2026"
     ],
     tags: ["Salesforce", "Apex", "Flows", "SQL", "Data Modeling"]
@@ -67,21 +70,21 @@ const experienceData: ExperienceEntry[] = [
     id: 3,
     company: "ProAutomated",
     role: "Field Service Engineer",
-    date: "February 2025 - December 2025",
+    date: "February 2025 - January 2026",
     location: "Atlanta, GA / Contracted to Thermo Systems at QTS",
     logo: proAutomatedLogo,
     bullets: [
-      "Programmed and commissioned Allen-Bradley PLC controls, performing EPMS/BMS functional and sequence testing, I/O checkout, Ignition SCADA validation, networking, and device-communication troubleshooting in data centers",
-      "Diagnosed software, controls, and network issues and improved automation logic and configurations within safety constraints; reconciled devices, vendor schematics, SCADA data, and checklists to unblock commissioning",
+      "Programmed Allen-Bradley PLC controls and commissioned data-center electrical power monitoring (EPMS) and building management systems (BMS) through functional and sequence testing, I/O checkout, and Ignition SCADA validation",
+      "Resolved software, controls, network, and device-communication issues and improved automation logic and configurations within safety constraints; reconciled devices, vendor schematics, SCADA data, and checklists to unblock commissioning",
       "Compiled discrepancy logs, photos, and vendor evidence, and explained mismatches to client-facing QTS and Thermo Systems stakeholders to support approved vendor-specific checklists and ongoing written reporting",
-      "Balanced commissioning and sequence-test demands during staffing gaps; onboarded three initial new hires and coached co-ops through demos, reference guides, and independent checks, helping trainees approach experienced peers' efficiency within two weeks"
+      "Balanced commissioning and sequence testing during staffing gaps. Trained three new hires and coached co-ops in EPMS/BMS checks on HVAC and electrical equipment through demos, reference guides, and independent checks. Helped trainees work independently and approach experienced peers' efficiency within two weeks, contributing to an estimated several-week reduction in team testing time"
     ],
     tags: ["Allen-Bradley PLC", "EPMS/BMS", "Ignition SCADA", "Network Troubleshooting", "Commissioning", "Onboarding"]
   },
   {
     id: 4,
     company: "Invisible Technologies",
-    role: "Advanced AI Trainer / Software Developer Contractor",
+    role: "Advanced AI Trainer - Coding Evaluation (Contract)",
     date: "February 2024 - February 2025",
     location: "Remote",
     logo: invisibleTechnologiesLogo,
@@ -102,7 +105,7 @@ const experienceData: ExperienceEntry[] = [
       "Delivered 27+ Jira stories and resolved 15+ bugs across a TypeScript/Angular application, Java REST services, SQL workflows, scheduled jobs, personalization, and pagination",
       "Built Java/JSON/XML REST services and SQL schema scripts; used Chrome DevTools and network inspection to trace failures across the client, API, database, and scheduled processes",
       "Developed Selenium and Cypress UI, integration, and REST API tests and worked in containerized development and CI/CD workflows using Docker, Gradle, and Apache Tomcat",
-      "Mentored interns through onboarding, story breakdown, debugging, and sprint execution, contributing to a 96% improvement over the prior year in the internship team's story completion rate measured using Agile story points"
+      "Led intern onboarding, mentoring, story breakdown, and sprint coordination, including debugging support, helping the internship team increase completed story points by 96% compared with the previous summer"
     ],
     tags: ["Angular", "TypeScript", "Java", "SQL", "Selenium", "Cypress", "Docker", "Gradle"]
   },
@@ -114,8 +117,8 @@ const experienceData: ExperienceEntry[] = [
     location: "Atlanta, GA",
     logo: georgiaTechLogo,
     bullets: [
-      "Supported 200+ students per semester in object-oriented programming, Agile/Scrum, Git/GitHub, software design, and team application development through demonstrations, office hours, grading, and project reviews",
-      "Collaborated with course staff on project requirements, assignments, exam questions, and instructor examples using Java/JavaFX or Android tooling with TestFX and Mockito"
+      "Personally assisted 200+ students per semester in object-oriented programming, Agile/Scrum, Git/GitHub, software design, and team application development through lectures, demonstrations, office hours, grading, and project reviews",
+      "Collaborated with course staff on project requirements, assignments, exam questions, and instructor examples using Java/JavaFX, Android tooling, TestFX, and Mockito"
     ],
     tags: ["Java", "Object-Oriented Design", "JavaFX", "TestFX", "Mockito", "Git", "Agile"]
   }
@@ -167,9 +170,13 @@ export function ExperienceSection() {
                         <h3 className="text-xl font-bold text-foreground">{exp.role}</h3>
                         <div className="text-primary font-medium">{exp.company}</div>
                       </div>
-                      <div className="text-sm font-mono text-muted-foreground">
-                        <div>{exp.date}</div>
-                        <div>{exp.location}</div>
+                      <div className="space-y-1 text-sm font-mono text-muted-foreground">
+                        {('periods' in exp ? exp.periods : [exp]).map(({ date, location }) => (
+                          <div key={date}>
+                            <div>{date}</div>
+                            <div>{location}</div>
+                          </div>
+                        ))}
                       </div>
                     </div>
 

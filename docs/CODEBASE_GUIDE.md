@@ -1,6 +1,6 @@
 # Portfolio Codebase Guide
 
-Career content updated from the October 26, 2026 resume. The embedded PDF and download links still point to the September 30, 2026 asset until the owner uploads and configures the replacement.
+Career content follows the November 12, 2026 master resume where sources conflict and retains supported details omitted for space. The embedded PDF and download links still point to the October 26, 2026 asset until the replacement is uploaded and configured.
 Architecture walkthrough last verified against the website source on October 1, 2026.
 Navigation and shared-theme sections updated and checked locally on October 26, 2026; these follow-up changes are not yet published.
 
@@ -166,6 +166,8 @@ The categories cover front-end/mobile development, backend/APIs, AI/ML, data/vis
 
 The October refresh also adds Alembic, SQLite, pytest, and Playwright without removing earlier skills.
 
+The November refresh explicitly lists Automated Testing and Object-Oriented Programming.
+
 The grid changes from one column to two at `md` and four at `lg`. Hovering a card lifts it by one Tailwind spacing step, adds a subtle purple glow, and strengthens its border.
 
 There is no filtering, sorting, or carousel in the production React version.
@@ -178,7 +180,7 @@ File: `artifacts/portfolio/src/components/ProjectsSection.tsx`
 
 1. FDA Adverse Event Explorer
 2. Portfolio Website
-3. Artificial Neural Intelligence Machine Entity
+3. GAN-Based Face Colorization and Upscaling (ANIME)
 4. Interactive Parallel Coordinate Plot
 5. Jim's Dungeon: Dungeon Crawler
 
@@ -190,7 +192,7 @@ The FDA record links directly to `Abdul-RahmanSayed/FDA-Food-Safety-Data-Pipelin
 
 The FDA project now spans September through October 2026 and describes the React/TypeScript/D3 Explorer, FastAPI API, shared Python analysis rules, and versioned read-only SQLite releases. It retains the original ingestion and CLI-analysis details, adds the measured warm-default benchmark with its sample and concurrency qualifiers, and documents GitHub Pages/Render Free hosting, the labeled saved fallback, parity checks, sleep/wake recovery, and release restoration. Its Live Demo button opens the existing Project Lab Explorer link. These are features of the linked project, not a backend added to the static portfolio.
 
-The GAN project links to the user-provided report at `https://abhay-sheshadri.github.io/ML4641-Project/` using a **Project Report** button. Its full source is currently unavailable, so it has no GitHub button. Older cards that link to the general profile use **GitHub Profile** rather than implying a project-specific repository. When neither `report` nor `live` exists, the secondary action renders as a disabled **No Demo** button.
+ANIME (Artificial Neural Intelligence Machine Entity) describes the four-person team's GAN work, including Abdul-Rahman's Python ML contribution, technical reporting, Scrum Master tasks, and milestone and scope work. It links to the user-provided report at `https://abhay-sheshadri.github.io/ML4641-Project/` using a **Project Report** button. Its full source is currently unavailable, so it has no GitHub button. Older cards that link to the general profile use **GitHub Profile** rather than implying a project-specific repository. When neither `report` nor `live` exists, the secondary action renders as a disabled **No Demo** button.
 
 ### 4.6 Experience timeline
 
@@ -198,7 +200,9 @@ File: `artifacts/portfolio/src/components/ExperienceSection.tsx`
 
 `experienceData` contains seven roles: Confidential Pre-Launch Technology Venture, iD Tech, SkillStorm, ProAutomated, Invisible Technologies, MessageGears, and Georgia Institute of Technology. Each entry provides the employer, role, dates, location, resume-derived impact bullets, technology tags, and an optional logo asset.
 
-The current part-time full-stack role begins in January 2026 and keeps the venture anonymous. Its October validation snapshot lists 41 backend tests, 59 Flutter tests, 88.05% backend coverage, and production-mode smoke tests. The earlier integration baseline of 57 frontend/backend tests and 88.8% coverage remains separately labeled as historical, alongside the existing static-analysis and documentation work; these snapshots are not combined into one test total. The role also describes Alembic migrations, Azure startup recovery, database backup/migration, guarded deployments, release safeguards, and recovery procedures. iD Tech's part-time instructor role ends in August 2026; SkillStorm is dated January 2026 and explains the canceled financial-services project and cohort release on January 30. MessageGears' 96% improvement is attributed to the internship team, compared with the prior year, and measured using Agile story points.
+The current part-time full-stack role begins in January 2026 and keeps the venture anonymous. Its October 2026 validation snapshot lists 41 backend tests, 59 Flutter tests, 88.05% backend coverage, and production-mode smoke tests. The earlier integration baseline of 57 frontend/backend tests and 88.8% coverage remains separately labeled as historical, alongside the existing static-analysis and documentation work; these snapshots are not combined into one test total. The role also describes Alembic migrations, Azure startup recovery, database backup/migration, guarded deployments, release safeguards, and recovery procedures.
+
+The iD Tech card pairs each stint with its own date range and location: April–July 2026 (Remote / Atlanta, GA) and May 2020–August 2021 (Remote / Alpharetta, GA). SkillStorm is dated January 2026 and explains the canceled financial-services project and cohort release on January 30. ProAutomated extends through January 2026. The Invisible Technologies title is Advanced AI Trainer - Coding Evaluation (Contract). At MessageGears, the internship team completed 96% more story points than the previous summer.
 
 The confidential venture omits `logo` and uses `attached_assets/experience-default.svg`. Other entries use dedicated company logos. Logos are imported through `@assets`, rendered inside a fixed white logo panel with `object-contain`, and lazy-loaded. Dedicated logos receive company-specific alternate text; the generic fallback is decorative because the adjacent card already names the employer.
 
@@ -214,7 +218,7 @@ The section uses the same versioned Cloudinary resume URL as the hero and offers
 
 If the browser cannot embed PDFs, the nested fallback content explains the limitation and offers another download link. The decorative title bar above the viewer is part of the page, not part of the PDF viewer.
 
-The current resume is `https://res.cloudinary.com/dyd2wkozw/image/upload/v1790823794/Abdul_Rahman_Sayed_Resume_093026.pdf`. The URL and displayed/download filename are exported by `artifacts/portfolio/src/lib/resume.ts` and imported by both Hero and Resume, so replacements have a single source of truth. The viewer filename wraps on smaller screens. PDFs under `attached_assets` and `src/assets/pdfs` are historical files and are not imported by the production React site.
+The URL and displayed/download filename are exported by `artifacts/portfolio/src/lib/resume.ts` and imported by both Hero and Resume, so replacements have a single source of truth. The viewer filename wraps on smaller screens. PDFs under `attached_assets` and `src/assets/pdfs` are historical files and are not imported by the production React site.
 
 ### 4.8 Contact section
 
