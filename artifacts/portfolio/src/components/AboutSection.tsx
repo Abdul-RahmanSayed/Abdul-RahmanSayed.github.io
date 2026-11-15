@@ -4,7 +4,7 @@ import headshotPath from "@assets/Headshot3_1778170238565.jpg";
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-24 bg-background">
+    <section id="about" className="py-24 bg-background overflow-x-clip">
       <div className="container mx-auto px-6">
         
         <motion.div
@@ -44,17 +44,17 @@ export function AboutSection() {
             className="lg:w-2/3 space-y-6 text-muted-foreground"
           >
             <p className="text-lg leading-relaxed text-foreground">
-              I'm a Georgia Tech Computer Science graduate with experience in full-stack engineering, AI evaluation and instruction, Salesforce development, and controls engineering. My recent work includes integrating a Flutter mobile app with Python/FastAPI services and Azure SQL, recovering Azure deployments, and expanding a tested FDA data pipeline into a deployed React, D3.js, and FastAPI Explorer backed by SQLite. I document the systems so other people can use and maintain them. I enjoy working through the actual problem, building across the stack, and making software more reliable through testing, debugging, and feedback.
+              I build and troubleshoot software across the stack. Recent work includes connecting a Flutter app to FastAPI and Azure SQL, recovering an Azure App Service deployment, and turning an FDA data pipeline into an interactive explorer. I test and document the work so other people can use and maintain it.
+            </p>
+
+            <p className="leading-relaxed">
+              I also bring experience in AI coding evaluation, Salesforce development, data center controls automation, and teaching programming and machine learning.
             </p>
 
             <div className="bg-card border border-border rounded-xl p-6 shadow-sm">
               <h3 className="text-foreground font-semibold text-xl mb-4">Education</h3>
               <div className="mb-2">
-                <span className="font-medium text-foreground">Georgia Institute of Technology</span>
-                <span className="mx-2">•</span>
-                <span>B.S. Computer Science</span>
-                <span className="mx-2">•</span>
-                <span>December 2023</span>
+                <span className="font-medium text-foreground">B.S. in Computer Science</span>, Georgia Tech, December 2023
               </div>
               <ul className="list-disc list-inside space-y-1 ml-4 text-sm">
                 <li>Threads: Intelligence and Media</li>

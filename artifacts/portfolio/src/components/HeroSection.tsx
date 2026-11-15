@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, ArrowRight, Download } from 'lucide-react';
 import headshotPath from "@assets/Headshot3_1778170238565.jpg";
@@ -9,31 +9,26 @@ const roles = ["Full-Stack Developer", "Software Engineer", "Applied AI Develope
 
 export function HeroSection() {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
-  const [displayedText, setDisplayedText] = useState('');
+  const [visibleCharacters, setVisibleCharacters] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const currentRole = roles[currentRoleIndex];
 
   useEffect(() => {
-    const currentRole = roles[currentRoleIndex];
-    
-    const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        if (displayedText.length < currentRole.length) {
-          setDisplayedText(currentRole.substring(0, displayedText.length + 1));
-        } else {
-          setTimeout(() => setIsDeleting(true), 2000);
-        }
+    const isFullyTyped = visibleCharacters === currentRole.length;
+    const delay = isDeleting ? 50 : isFullyTyped ? 2000 : 100;
+    const timeout = window.setTimeout(() => {
+      if (isDeleting && visibleCharacters === 0) {
+        setCurrentRoleIndex(index => (index + 1) % roles.length);
+        setIsDeleting(false);
+      } else if (!isDeleting && isFullyTyped) {
+        setIsDeleting(true);
       } else {
-        if (displayedText.length > 0) {
-          setDisplayedText(currentRole.substring(0, displayedText.length - 1));
-        } else {
-          setIsDeleting(false);
-          setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
-        }
+        setVisibleCharacters(count => count + (isDeleting ? -1 : 1));
       }
-    }, isDeleting ? 50 : 100);
+    }, delay);
 
-    return () => clearTimeout(timeout);
-  }, [displayedText, isDeleting, currentRoleIndex, roles]);
+    return () => window.clearTimeout(timeout);
+  }, [currentRole, isDeleting, visibleCharacters]);
 
   return (
     <section id="hero" className="min-h-screen relative flex items-center pt-20 overflow-hidden">
@@ -61,20 +56,21 @@ export function HeroSection() {
               Abdul-Rahman Sayed
             </h1>
             
-            <div className="h-10 md:h-12 mb-6">
-              <span className="text-2xl md:text-3xl font-medium text-muted-foreground">
-                {displayedText}
+            <p className="mb-6 min-h-10 md:min-h-12 text-2xl md:text-3xl font-medium text-foreground">
+              <span className="sr-only">{roles.join(', ')}</span>
+              <span aria-hidden="true">
+                {currentRole.slice(0, visibleCharacters)}
                 <span className="animate-pulse inline-block w-1 ml-1 bg-primary h-[1em] align-middle"></span>
               </span>
-            </div>
+            </p>
             
             <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-lg leading-relaxed">
-              Building practical, reliable software across web applications, backend systems, APIs, and AI-powered tools.
+              I connect apps to APIs and databases, troubleshoot deployments, and build tools people can use.
             </p>
             
             <div className="flex flex-wrap gap-4 mb-12">
               <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full font-medium" data-testid="cta-projects">
-                <a href="#projects">View Projects <ArrowRight className="ml-2 w-4 h-4" /></a>
+                <a href="#projects">Explore Featured Work <ArrowRight className="ml-2 w-4 h-4" /></a>
               </Button>
               <Button asChild variant="outline" size="lg" className="rounded-full border-border hover:bg-accent font-medium" data-testid="cta-resume">
                 <a href={resumePdfUrl} download={resumeFilename} target="_blank" rel="noopener noreferrer">Download Resume <Download className="ml-2 w-4 h-4" /></a>

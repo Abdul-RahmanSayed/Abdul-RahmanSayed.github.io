@@ -13,6 +13,12 @@ type ProjectEntry = {
   github: string | null;
   live: string | null;
   report?: string;
+  caseStudy?: {
+    source: string;
+    steps: { title: string; detail: string }[];
+    tradeoff: string;
+    benchmark: string;
+  };
   gradient: string;
   borderGlow: string;
 };
@@ -22,18 +28,25 @@ const projectsData: ProjectEntry[] = [
     id: 5,
     title: "FDA Adverse Event Explorer",
     date: "September 2026 - October 2026",
-    description: "Technical take-home and independent extension for downloading, validating, and analyzing FDA adverse-event reports. A Node.js ingestion pipeline and Python analysis tools power a deployed React/TypeScript/D3 Explorer backed by FastAPI and versioned read-only SQLite releases.",
+    description: "Filter and explore 97,652 FDA adverse-event reports by year or product, compare trends, and open individual records.",
     stack: ["React", "TypeScript", "D3.js", "FastAPI", "SQLite", "Node.js", "Python", "pandas", "NumPy", "Matplotlib", "REST APIs"],
     accomplishments: [
-      "Downloaded 97,652 FDA adverse-event reports across 987 JSON files using cursor pagination, configurable bounded concurrency, pacing, exponential-backoff retries, duplicate-ID checks, and completion manifests",
       "Implemented year and raw product-name substring filters, formatting normalization, within-report term deduplication, age-unit conversion, statistical summaries, report rankings, and timestamped charts",
-      "Preserved CLI analysis rules in a shared Python package and versioned read-only SQLite releases; built a FastAPI and React/TypeScript/D3 Explorer with year and product filters, accessible tables, report pages and details, and stale-response protection",
-      "Reused the prepared default overview and bounded SQL work; measured 152 ms warm default p95 over 50 hosted requests with five concurrent readers and about 100 MiB peak process RSS",
-      "Deployed through GitHub Pages and Render Free with a labeled saved fallback; verified Python/SQLite parity, hosted requests, sleep/wake recovery, and restoration of matching releases",
-      "Verified ingestion with 98 Node.js tests and analysis with 31 Python tests; reconciled saved record counts, unique IDs, date boundaries, and window totals to check dataset consistency"
+      "Reconciled saved record counts, unique IDs, date boundaries, and download-window totals. The pipeline repository documents 99 passing Node checks and 66 passing Python tests",
+      "Checked hosted requests, Render sleep/wake recovery, and restoration of matching frontend and API releases. The warm hosted benchmark observed about 100 MiB peak process RSS"
     ],
     github: "https://github.com/Abdul-RahmanSayed/FDA-Food-Safety-Data-Pipeline",
     live: "https://abdul-rahmansayed.github.io/Project-Lab/#/fda",
+    caseStudy: {
+      source: "https://github.com/Abdul-RahmanSayed/Project-Lab",
+      steps: [
+        { title: "Ingest and verify", detail: "I built a Node.js downloader that saved 987 JSON files using cursor pagination, bounded concurrency, request pacing, exponential-backoff retries, duplicate-ID checks, and completion manifests." },
+        { title: "Prepare a reusable dataset", detail: "I reused the Python CLI’s analysis rules to prepare versioned, read-only SQLite releases, then checked that SQLite queries matched the Python results." },
+        { title: "Build the explorer", detail: "I extended the take-home into an interactive app: FastAPI serves results to React, TypeScript, and D3. Visitors get accessible tables and paginated reports, and late responses can’t overwrite a newer selection." }
+      ],
+      tradeoff: "The GitHub Pages frontend shows a clearly labeled saved overview for the default selection while the Render Free API wakes. Custom filters wait for the API, so the saved numbers never pass for a new query.",
+      benchmark: "The default overview measured 152 ms p95 across 50 warm hosted requests with five concurrent readers."
+    },
     gradient: "from-cyan-500/20 to-blue-500/20",
     borderGlow: "group-hover:border-cyan-500/50 group-hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]"
   },
@@ -106,7 +119,70 @@ const projectsData: ProjectEntry[] = [
   }
 ];
 
+function FeaturedProject({ project, study }: { project: ProjectEntry; study: NonNullable<ProjectEntry['caseStudy']> }) {
+  return (
+    <article className="mb-8 rounded-2xl border border-border bg-card overflow-hidden" data-testid={`project-card-${project.id}`}>
+      <div className={`border-b border-border bg-gradient-to-br ${project.gradient} p-6 sm:p-8`}>
+        <p className="mb-3 text-xs font-mono font-semibold tracking-wide text-primary uppercase">Featured case study</p>
+        <h3 className="text-2xl sm:text-3xl font-bold text-foreground">{project.title}</h3>
+        <p className="mt-2 text-sm font-mono text-muted-foreground">{project.date}</p>
+        <p className="mt-4 max-w-2xl text-base sm:text-lg leading-relaxed text-foreground">{project.description}</p>
+        <div className="mt-5 flex flex-wrap gap-3">
+          {project.live && (
+            <Button asChild>
+              <a href={project.live} target="_blank" rel="noopener noreferrer">
+                <ExternalLink className="w-4 h-4" /> Open FDA Explorer
+              </a>
+            </Button>
+          )}
+          <Button asChild variant="outline">
+            <a href={study.source} target="_blank" rel="noopener noreferrer">
+              <Github className="w-4 h-4" /> Explorer Source
+            </a>
+          </Button>
+          {project.github && (
+            <Button asChild variant="outline">
+              <a href={project.github} target="_blank" rel="noopener noreferrer">
+                <Github className="w-4 h-4" /> Pipeline Source
+              </a>
+            </Button>
+          )}
+        </div>
+      </div>
+
+      <div className="space-y-6 p-6 sm:p-8">
+        <ol className="grid gap-4 lg:grid-cols-3">
+          {study.steps.map((step, index) => (
+            <li key={step.title} className="rounded-xl border border-border p-4">
+              <h4 className="mb-2 font-semibold text-foreground">
+                <span className="mr-2 font-mono text-primary">{index + 1}.</span>{step.title}
+              </h4>
+              <p className="text-sm leading-relaxed text-muted-foreground">{step.detail}</p>
+            </li>
+          ))}
+        </ol>
+
+        <div className="rounded-xl border border-border bg-accent/40 p-4 sm:p-5">
+          <h4 className="mb-2 font-semibold text-foreground">The deployment tradeoff</h4>
+          <p className="text-sm leading-relaxed text-muted-foreground">{study.tradeoff}</p>
+          <p className="mt-3 text-sm font-medium text-foreground">{study.benchmark}</p>
+        </div>
+
+        <details className="rounded-xl border border-border p-4 text-sm text-muted-foreground">
+          <summary className="cursor-pointer font-medium text-foreground">More on the pipeline and validation</summary>
+          <ul className="mt-3 list-disc space-y-2 pl-5">
+            {project.accomplishments.map(detail => <li key={detail}>{detail}</li>)}
+          </ul>
+          <p className="mt-3">{project.stack.join(' · ')}</p>
+        </details>
+      </div>
+    </article>
+  );
+}
+
 export function ProjectsSection() {
+  const featured = projectsData.find(project => project.caseStudy);
+
   return (
     <section id="projects" className="py-24 bg-background">
       <div className="container mx-auto px-6">
@@ -122,8 +198,11 @@ export function ProjectsSection() {
           <div className="w-16 h-1 bg-primary rounded-full"></div>
         </motion.div>
 
+        {featured?.caseStudy && <FeaturedProject project={featured} study={featured.caseStudy} />}
+
+        <h3 className="mb-5 text-xl font-semibold text-foreground">More projects</h3>
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
-          {projectsData.map((project, index) => (
+          {projectsData.filter(project => project !== featured).map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 30 }}
@@ -137,7 +216,7 @@ export function ProjectsSection() {
               <div className={`min-h-32 md:min-h-40 w-full bg-gradient-to-br ${project.gradient} relative flex items-end p-6 border-b border-border`}>
                 <div className="relative z-10 w-full">
                   <div className="flex justify-between items-start w-full">
-                    <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">{project.title}</h3>
+                    <h4 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">{project.title}</h4>
                   </div>
                   <span className="text-sm font-mono text-muted-foreground mt-2 block">{project.date}</span>
                 </div>

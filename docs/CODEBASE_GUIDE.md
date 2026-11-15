@@ -1,6 +1,6 @@
 # Portfolio Codebase Guide
 
-Career content follows the November 12, 2026 master resume where sources conflict and retains supported details omitted for space. The embedded PDF and download links still point to the October 26, 2026 asset until the replacement is uploaded and configured.
+Career content follows the November 12, 2026 master resume where sources conflict and retains supported details omitted for space. The embedded PDF and download links use that master resume through the shared configuration.
 Architecture walkthrough last verified against the website source on October 1, 2026.
 Navigation and shared-theme sections updated and checked locally on October 26, 2026; these follow-up changes are not yet published.
 
@@ -79,9 +79,9 @@ Wouter router
     ├── path "/" → Home
     │                ├── Hero
     │                ├── About
-    │                ├── Skills
     │                ├── Projects
     │                ├── Experience
+    │                ├── Skills
     │                ├── Resume
     │                ├── Contact
     │                └── Footer
@@ -126,15 +126,13 @@ The hero fills at least one viewport and presents:
 
 - the availability badge;
 - Abdul-Rahman's name;
-- an animated job-title line;
+- a typewriter effect that rotates through four roles, starting with Full-Stack Developer;
 - a short tagline;
 - project, resume, and contact calls to action;
 - GitHub, LinkedIn, and email links; and
 - a circular headshot with a purple-to-teal border and glow.
 
-The rotating role list currently contains Full-Stack Developer, Software Engineer, Applied AI Developer, and Georgia Tech Graduate. The accompanying tagline broadens the positioning beyond front-end work to web applications, backend systems, APIs, and AI-powered tools.
-
-The typewriter effect uses three state values: the current role index, the visible substring, and whether text is being deleted. It adds one character every 100ms, holds the completed role for roughly two seconds, deletes one character every 50ms, and advances with modulo arithmetic so the four roles loop forever.
+The title types out Full-Stack Developer, Software Engineer, Applied AI Developer, and Georgia Tech Graduate in turn. The tagline emphasizes API/database integration, deployment troubleshooting, and building usable tools. The primary call to action jumps past About to the featured work at the top of Projects.
 
 The background effect is CSS-only: two large, blurred color circles use the pulse animation. The entrance of the text and photo uses Framer Motion.
 
@@ -152,7 +150,7 @@ The About section is static content arranged as one column on smaller screens an
 - the Azure Fundamentals and Google AI Professional certifications; and
 - a full-stack software engineering career statement that also calls out APIs, data, and applied AI.
 
-The professional summary positions Abdul-Rahman's experience across full-stack engineering, AI evaluation and instruction, Salesforce development, and controls engineering. Recent examples include a Flutter app integrated with Python/FastAPI and Azure SQL, the FDA data pipeline, and documentation that supports onboarding and maintenance.
+The professional summary leads with Flutter/FastAPI and Azure SQL integration, recovery of an Azure App Service deployment, and the FDA Explorer. It presents AI coding evaluation, Salesforce development, controls automation, and teaching as supporting experience.
 
 The image begins in grayscale and transitions to color on hover. The image and text columns use separate scroll-triggered entrance animations. There is no data request or component state; editing the JSX changes the displayed content directly.
 
@@ -184,13 +182,13 @@ File: `artifacts/portfolio/src/components/ProjectsSection.tsx`
 4. Interactive Parallel Coordinate Plot
 5. Jim's Dungeon: Dungeon Crawler
 
-Each typed `ProjectEntry` supplies the title, date, summary, technology badges, accomplishments, nullable GitHub/live URLs, an optional report URL, and color classes. The render loop turns those values into a responsive one-column/two-column card grid. Headers use a minimum height so longer titles can wrap without clipping. The two older coursework projects remain as additional portfolio history.
+Each typed `ProjectEntry` supplies the title, date, summary, technologies, accomplishments, nullable GitHub/live URLs, an optional report URL, and color classes. The optional `caseStudy` fields give the featured project a full-width layout above a responsive one-column/two-column grid. Regular card headers can grow to fit longer titles. The two older coursework projects remain as additional portfolio history.
 
-Every card has a gradient header, stack badges, accomplishment bullets, and action buttons. The shared `Button` component can render its child anchor through Radix `Slot`, which preserves button styling while keeping correct link behavior.
+Regular cards have a gradient header, stack badges, accomplishment bullets, and action buttons. The shared `Button` component can render its child anchor through Radix `Slot`, which preserves button styling while keeping correct link behavior.
 
-The FDA record links directly to `Abdul-RahmanSayed/FDA-Food-Safety-Data-Pipeline` and records the resume's ingestion totals, validation checks, and 98 Node.js / 31 Python test counts. The Portfolio Website record describes the actual React implementation and links directly to this repository, with a Live Demo button for the deployed site.
+The featured FDA Explorer leads with year/product filtering and individual report details, then explains ingestion, dataset preparation, and serving. Its three links go to the deployed Explorer, the Project Lab application source, and the separate FDA pipeline source. The Portfolio Website record links directly to this repository and the deployed site.
 
-The FDA project now spans September through October 2026 and describes the React/TypeScript/D3 Explorer, FastAPI API, shared Python analysis rules, and versioned read-only SQLite releases. It retains the original ingestion and CLI-analysis details, adds the measured warm-default benchmark with its sample and concurrency qualifiers, and documents GitHub Pages/Render Free hosting, the labeled saved fallback, parity checks, sleep/wake recovery, and release restoration. Its Live Demo button opens the existing Project Lab Explorer link. These are features of the linked project, not a backend added to the static portfolio.
+The case study highlights the labeled default overview while Render wakes, the need for API readiness before custom filters run, and the scoped warm benchmark. A disclosure preserves the CLI analysis, validation, memory, sleep/wake, and matching-release recovery details. The check counts in that disclosure come from the pipeline's documented validation run. The portfolio makes no FDA data requests to render the case study.
 
 ANIME (Artificial Neural Intelligence Machine Entity) describes the four-person team's GAN work, including Abdul-Rahman's Python ML contribution, technical reporting, Scrum Master tasks, and milestone and scope work. It links to the user-provided report at `https://abhay-sheshadri.github.io/ML4641-Project/` using a **Project Report** button. Its full source is currently unavailable, so it has no GitHub button. Older cards that link to the general profile use **GitHub Profile** rather than implying a project-specific repository. When neither `report` nor `live` exists, the secondary action renders as a disabled **No Demo** button.
 
@@ -198,11 +196,11 @@ ANIME (Artificial Neural Intelligence Machine Entity) describes the four-person 
 
 File: `artifacts/portfolio/src/components/ExperienceSection.tsx`
 
-`experienceData` contains seven roles: Confidential Pre-Launch Technology Venture, iD Tech, SkillStorm, ProAutomated, Invisible Technologies, MessageGears, and Georgia Institute of Technology. Each entry provides the employer, role, dates, location, resume-derived impact bullets, technology tags, and an optional logo asset.
+`experienceData` contains seven employer cards: Confidential Pre-Launch Technology Venture, iD Tech, SkillStorm, ProAutomated, Invisible Technologies, MessageGears, and Georgia Institute of Technology. Each entry provides the employer, role or grouped role periods, dates, location, resume-derived impact bullets, technology tags, and an optional logo asset. Optional notes put supporting details behind a disclosure.
 
 The current part-time full-stack role begins in January 2026 and keeps the venture anonymous. Its October 2026 validation snapshot lists 41 backend tests, 59 Flutter tests, 88.05% backend coverage, and production-mode smoke tests. The earlier integration baseline of 57 frontend/backend tests and 88.8% coverage remains separately labeled as historical, alongside the existing static-analysis and documentation work; these snapshots are not combined into one test total. The role also describes Alembic migrations, Azure startup recovery, database backup/migration, guarded deployments, release safeguards, and recovery procedures.
 
-The iD Tech card pairs each stint with its own date range and location: April–July 2026 (Remote / Atlanta, GA) and May 2020–August 2021 (Remote / Alpharetta, GA). SkillStorm is dated January 2026 and explains the canceled financial-services project and cohort release on January 30. ProAutomated extends through January 2026. The Invisible Technologies title is Advanced AI Trainer - Coding Evaluation (Contract). At MessageGears, the internship team completed 96% more story points than the previous summer.
+The iD Tech card pairs each stint with its own date range and location: April–July 2026 (Remote / Atlanta, GA) and May 2020–August 2021 (Remote / Alpharetta, GA). SkillStorm is dated January 2026 and explains the canceled financial-services project and cohort release on January 30. ProAutomated extends through January 2026. The Invisible Technologies title is Advanced AI Trainer - Coding Evaluation (Contract). MessageGears pairs each internship title with its dates on a single card. Its 96% figure is the increase in the team's completed story points compared with the previous summer.
 
 The confidential venture omits `logo` and uses `attached_assets/experience-default.svg`. Other entries use dedicated company logos. Logos are imported through `@assets`, rendered inside a fixed white logo panel with `object-contain`, and lazy-loaded. Dedicated logos receive company-specific alternate text; the generic fallback is decorative because the adjacent card already names the employer.
 
@@ -284,7 +282,7 @@ The site is built with Tailwind breakpoints rather than a shared JavaScript layo
 
 Framer Motion handles initial page entrances, scroll reveals, stagger delays, and the mobile menu. Most section animations use `whileInView` with `viewport={{ once: true }}`, so they do not replay on every scroll.
 
-CSS handles smooth scrolling, color transitions, hover transforms, the hero's blinking cursor, and its blurred pulse background.
+CSS handles smooth scrolling, color transitions, hover transforms, the hero's pulsing cursor, and its blurred pulse background.
 
 There is currently no `prefers-reduced-motion` branch to disable or simplify animation for visitors who request it.
 
@@ -535,7 +533,7 @@ The API server and database are not deployed by this workflow. GitHub Pages cann
 
 | Goal | Primary file(s) |
 | --- | --- |
-| Change the section order | `artifacts/portfolio/src/pages/Home.tsx` |
+| Change the section order | `artifacts/portfolio/src/pages/Home.tsx` and the section/link lists in `artifacts/portfolio/src/components/Navbar.tsx` |
 | Edit hero roles or tagline | `components/HeroSection.tsx` |
 | Edit summary, education, certification | `components/AboutSection.tsx` |
 | Add or remove a skill category | `components/SkillsSection.tsx` → `skillsData` |

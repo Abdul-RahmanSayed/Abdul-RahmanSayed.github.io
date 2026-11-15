@@ -8,16 +8,20 @@ import invisibleTechnologiesLogo from '@assets/invisibleTechLogo.png';
 import messageGearsLogo from '@assets/messageGearsLogo.jpg';
 import georgiaTechLogo from '@assets/Georgia-Tech-New-logo-f.png';
 
-type ExperiencePeriod = { date: string; location: string };
+type ExperiencePeriod = { date: string; location: string; role?: string };
 
 type ExperienceEntry = {
   id: number;
   company: string;
-  role: string;
   logo?: string;
   bullets: string[];
+  notes?: string[];
   tags: string[];
-} & (ExperiencePeriod | { periods: ExperiencePeriod[] });
+} & (
+  | (ExperiencePeriod & { role: string })
+  | { role: string; periods: ExperiencePeriod[] }
+  | { role?: never; periods: (ExperiencePeriod & { role: string })[] }
+);
 
 const experienceData: ExperienceEntry[] = [
   {
@@ -27,11 +31,13 @@ const experienceData: ExperienceEntry[] = [
     date: "January 2026 - Present",
     location: "Remote",
     bullets: [
-      "Led production-readiness and integration of a team-built cross-platform Flutter/Dart mobile app with Python, FastAPI, SQLAlchemy, and Azure SQL",
-      "Designed non-destructive Alembic migrations that preserved data and enforced integrity constraints; built backward-compatible REST adapters to resolve ID, authentication, timestamp, notification, and state-synchronization contracts",
+      "Led frontend and backend integration and release preparation for a team-built Flutter/Dart app using Python, FastAPI, SQLAlchemy, and Azure SQL",
+      "Designed Alembic migrations that preserved existing data and enforced integrity constraints, and built backward-compatible REST adapters",
+      "Restored an Azure App Service deployment by isolating an unconfigured dependency, backing up and migrating Azure SQL, correcting the deployment branch settings, and verifying recovery with health checks"
+    ],
+    notes: [
       "Improved Azure reliability through database compatibility fixes, transient retries, request tracing, standardized errors, CORS, secure API logging, and guarded GitHub Actions deployments",
-      "Recovered Azure App Service startup by isolating an unconfigured media provider; backed up and migrated Azure SQL, corrected deployment-branch settings, and verified live liveness and readiness checks",
-      "Validated core journeys in October 2026 with 41 passing backend tests, 59 Flutter tests, 88.05% backend coverage, and production-mode smoke tests; documented release safeguards and recovery procedures",
+      "October 2026 test snapshot: 41 backend tests, 59 Flutter tests, and 88.05% backend coverage. Ran deployment smoke tests and documented release safeguards and recovery procedures",
       "Previously validated an integration baseline of 57 passing frontend/backend tests and 88.8% backend coverage, plus static analysis; documented architecture, onboarding, migrations, deployment, testing, and troubleshooting"
     ],
     tags: ["Flutter", "Dart", "Python", "FastAPI", "SQLAlchemy", "Alembic", "Azure SQL", "Azure App Service", "REST APIs", "GitHub Actions", "Integration Testing"]
@@ -76,8 +82,11 @@ const experienceData: ExperienceEntry[] = [
     bullets: [
       "Programmed Allen-Bradley PLC controls and commissioned data-center electrical power monitoring (EPMS) and building management systems (BMS) through functional and sequence testing, I/O checkout, and Ignition SCADA validation",
       "Resolved software, controls, network, and device-communication issues and improved automation logic and configurations within safety constraints; reconciled devices, vendor schematics, SCADA data, and checklists to unblock commissioning",
-      "Compiled discrepancy logs, photos, and vendor evidence, and explained mismatches to client-facing QTS and Thermo Systems stakeholders to support approved vendor-specific checklists and ongoing written reporting",
-      "Balanced commissioning and sequence testing during staffing gaps. Trained three new hires and coached co-ops in EPMS/BMS checks on HVAC and electrical equipment through demos, reference guides, and independent checks. Helped trainees work independently and approach experienced peers' efficiency within two weeks, contributing to an estimated several-week reduction in team testing time"
+      "Documented discrepancies with photos and vendor evidence and coordinated findings with Thermo Systems and QTS, supporting approved vendor-specific checklists and ongoing reporting",
+      "Trained three new hires and coached co-ops on EPMS/BMS checks for HVAC and electrical equipment while balancing commissioning and sequence testing during staffing gaps"
+    ],
+    notes: [
+      "Used demos, reference guides, and independent checks to help trainees work independently and approach experienced peers’ efficiency within two weeks, contributing to an estimated several-week reduction in team testing time"
     ],
     tags: ["Allen-Bradley PLC", "EPMS/BMS", "Ignition SCADA", "Network Troubleshooting", "Commissioning", "Onboarding"]
   },
@@ -97,9 +106,10 @@ const experienceData: ExperienceEntry[] = [
   {
     id: 5,
     company: "MessageGears",
-    role: "Software Development Lead Intern / Software Development Intern",
-    date: "May 2023 - August 2023; May 2022 - August 2022",
-    location: "Atlanta, GA",
+    periods: [
+      { role: "Software Development Lead Intern", date: "May 2023 - August 2023", location: "Atlanta, GA" },
+      { role: "Software Development Intern", date: "May 2022 - August 2022", location: "Atlanta, GA" }
+    ],
     logo: messageGearsLogo,
     bullets: [
       "Delivered 27+ Jira stories and resolved 15+ bugs across a TypeScript/Angular application, Java REST services, SQL workflows, scheduled jobs, personalization, and pagination",
@@ -167,12 +177,13 @@ export function ExperienceSection() {
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-col mb-4 gap-2">
                       <div className="min-w-0">
-                        <h3 className="text-xl font-bold text-foreground">{exp.role}</h3>
-                        <div className="text-primary font-medium">{exp.company}</div>
+                        <h3 className="text-xl font-bold text-foreground">{exp.role ?? exp.company}</h3>
+                        {exp.role && <div className="text-primary font-medium">{exp.company}</div>}
                       </div>
                       <div className="space-y-1 text-sm font-mono text-muted-foreground">
-                        {('periods' in exp ? exp.periods : [exp]).map(({ date, location }) => (
+                        {('periods' in exp ? exp.periods : [exp]).map(({ date, location, role }) => (
                           <div key={date}>
+                            {!exp.role && role && <div className="font-sans font-medium text-foreground">{role}</div>}
                             <div>{date}</div>
                             <div>{location}</div>
                           </div>
@@ -188,6 +199,15 @@ export function ExperienceSection() {
                         </li>
                       ))}
                     </ul>
+
+                    {exp.notes && (
+                      <details className="mb-6 rounded-lg border border-border p-3 text-sm text-muted-foreground">
+                        <summary className="cursor-pointer font-medium text-foreground">Additional details</summary>
+                        <ul className="mt-3 list-disc space-y-2 pl-5">
+                          {exp.notes.map(note => <li key={note}>{note}</li>)}
+                        </ul>
+                      </details>
+                    )}
 
                     <div className="flex flex-wrap gap-2">
                       {exp.tags.map(tag => (

@@ -18,7 +18,7 @@ export function Navbar() {
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
-    const sections = ['hero', 'about', 'skills', 'projects', 'experience', 'resume', 'contact'];
+    const sections = ['hero', 'about', 'projects', 'experience', 'skills', 'resume', 'contact'];
     
     sections.forEach(section => {
       const el = document.getElementById(section);
@@ -44,9 +44,9 @@ export function Navbar() {
   const navLinks = [
     { name: 'Home', href: '#hero' },
     { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
     { name: 'Experience', href: '#experience' },
+    { name: 'Skills', href: '#skills' },
     { name: 'Resume', href: '#resume' },
     { name: 'Contact', href: '#contact' },
   ];
